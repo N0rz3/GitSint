@@ -5,7 +5,7 @@ import utils
 
 
 class core:
-  def maincore() -> None:
+  def maincore():
       global DEBUG
       os.system("cls && title GitSint v1 By Norze " if os.name == "nt" else "clear")
       banner = f"""                
