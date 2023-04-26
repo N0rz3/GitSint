@@ -3,3 +3,4 @@ tqdm
 requests
 trio
 httpx
+argparse
