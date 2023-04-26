@@ -15,10 +15,8 @@ __Find information using open-source intelligence (OSINT) on a Github account.__
 
 ```sh
 >> git clone https://github.com/N0rz3/GitSint.git
->> cd GitSint/
+>> cd GitSint/gitsint
 >> pip install -r requirements.txt
-
->> cd gitsint
 >> python main.py
 ```
 
