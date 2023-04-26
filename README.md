@@ -84,11 +84,11 @@ Export of the main information in JSON format:
 ```json
 [
     {
-        "login": "exemple",
+        "login": "example",
         "name": "examples",
         "id": "10000000",
         "avatar": "avatar.url/url",
-        "twitter": "exemple@twitter",
+        "twitter": "example@twitter",
         "email": "example@example.com"
     }
 ]
