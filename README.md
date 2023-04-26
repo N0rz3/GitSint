@@ -43,7 +43,6 @@ https://user-images.githubusercontent.com/123885505/234613439-bf4c7bb4-349a-4dba
 
 
 
-**Have fun ! 🥰💕**
 
 During the launch there will be marked `DEBUG` if the debug is __**True**__ it is that the request to the API went well otherwise the debug will be __**False**__ which means that there was an error during the query as:
 - A debit limit (if there have already been requests made before in a short period of time)
