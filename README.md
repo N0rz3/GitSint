@@ -133,4 +133,4 @@ Subscribe to my GitHub account for more tools and programs ! 😉
 
 ## **🧑 Tester**
 
- 😸 Tool tester on [BlueRed](https://github.com/CSM-BlueRed)
+ Tool tester on 😸 [BlueRed](https://github.com/CSM-BlueRed)
