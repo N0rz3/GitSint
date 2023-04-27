@@ -173,8 +173,8 @@ Email that corresponds to the target => {sniffer.name(ps)}
 
 [?] {data['login']+"@"+random.choice(utils.domain_list)} -> @{data['login']}
 [?] {ps+"@"+random.choice(utils.domain_list)} -> @{ps}
-[?] {ps.replace(" ", "").replace("a", "A").replace("b", "B").replace("c", "C").replace("d", "D").replace("e", "E").replace("f", "F").replace("g", "G").replace("h", "H").replace("i", "I").replace("j", "J").replace("k", "K").replace("l", "L").replace("m", "M").replace("n", "N").replace("o", "O").replace("p", "P").replace("q", "Q").replace("r", "R").replace("s", "S").replace("t", "T").replace("u", "U").replace("v", "V").replace("w", "W").replace("x", "X").replace("y", "Y").replace("z", "Z")+"@"+random.choice(utils.domain_list)} -> @{ps}
-[?] {ps.replace(" ", "").replace("A", "a").replace("B", "b").replace("C", "c").replace("D", "d").replace("E", "e").replace("F", "f").replace("G", "g").replace("H", "h").replace("I", "i").replace("J", "j").replace("K", "k").replace("L", "l").replace("M", "m").replace("N", "n").replace("O", "o").replace("P", "p").replace("Q", "q").replace("R", "r").replace("S", "s").replace("T", "t").replace("U", "u").replace("V", "v").replace("W", "w").replace("X", "x").replace("Y", "y").replace("Z", "z").replace("3", "e").replace("1", "i").replace("8", "B").replace("0", "o")+"@"+random.choice(utils.domain_list)} -> @{ps}
+[?] {ps.replace(" ", "").upper()+"@"+random.choice(utils.domain_list)} -> @{ps}
+[?] {ps.replace(" ", "").upper().replace("3", "e").replace("1", "i").replace("8", "B").replace("0", "o")+"@"+random.choice(utils.domain_list)} -> @{ps}
 [?] {ps+ps+"@"+random.choice(utils.domain_list)} -> @{ps}
 {sniffer.mail(ps)}
   """)
