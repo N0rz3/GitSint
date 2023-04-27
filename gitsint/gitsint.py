@@ -130,7 +130,7 @@ Last account update: {data['updated_at'].replace("-", "/").replace("T", " ").rep
           variation = ps.replace("c", "s").replace(" ", "").replace("3", "").replace("0", "o").replace("off", "") + "y"
 
           if data['name'] != None:
-            va = ", " + data['name'].replace(" ", "").replace("a", "A").replace("b", "B").replace("c", "C").replace("d", "D").replace("e", "E").replace("f", "F").replace("g", "G").replace("h", "H").replace("i", "I").replace("j", "J").replace("k", "K").replace("l", "L").replace("m", "M").replace("n", "N").replace("o", "O").replace("p", "P").replace("q", "Q").replace("r", "R").replace("s", "S").replace("t", "T").replace("u", "U").replace("v", "V").replace("w", "W").replace("x", "X").replace("y", "Y").replace("z", "Z").replace("0", "o").replace("3", "e").replace("1", "i").replace(" ", "").replace("4", "a").replace("9", "").replace("5", "").replace("6", "").replace(" ", "").replace("7", "").replace("8", "")
+            va = ", " + data['name'].replace("0", "o").replace("3", "e").replace("1", "i").replace(" ", "").replace("4", "a").replace("9", "").replace("5", "").replace("6", "").replace(" ", "").replace("7", "").replace("8", "").upper()
           if data['name'] == None:
             va = ""
           if data['twitter_username'] != None:
