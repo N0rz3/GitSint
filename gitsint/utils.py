@@ -1,7 +1,7 @@
 """
 Domain's list
 - mail (gmail, yahoo.fr, etc...)
-- webiste (.fr, .com, .xyz)
+- website (.fr, .com, .xyz)
 """
 
 domain_list = ["gmail.com","outlook.com","protonmail.com","yahoo.fr","mail.com","yandex.com", "icloud.com", "hotmail.com", "github.com"]
