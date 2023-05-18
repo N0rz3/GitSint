@@ -4,7 +4,7 @@ Domain's list
 - website (.fr, .com, .xyz)
 """
 
-domain_list = ["gmail.com","outlook.com","protonmail.com","yahoo.fr","mail.com","yandex.com", "icloud.com", "hotmail.com", "github.com"]
+domain_list = ["gmail.com","outlook.com","protonmail.com","yahoo.com","mail.com","yandex.com", "icloud.com", "hotmail.com", "github.com"]
 
 domains = [".com", ".xyz", ".fr", ".eu"]
 
