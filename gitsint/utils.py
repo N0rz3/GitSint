@@ -13,32 +13,32 @@ domains = [".com", ".xyz", ".fr", ".eu"]
 API's list
 - only github
 """
-def api_user(ps: str) -> str:
+def api_user(ps: str) -> None:
     api_user = f"https://api.github.com/users/{ps}"
 
     return api_user
 
-def api_commits(ps: str) -> str:
+def api_commits(ps: str) -> None:
     api_commits = f"https://api.github.com/users/{ps}/events"
 
     return api_commits
 
-def api_orgs(ps: str) -> str:
+def api_orgs(ps: str) -> None:
     api_orgs = f"https://api.github.com/users/{ps}/orgs"
 
     return api_orgs
 
-def api_events(ps: str) -> str:
+def api_events(ps: str) -> None:
     api_events = f"https://api.github.com/users/{ps}/events/public"
 
     return api_events
 
-def api_searchs(ps: str) -> str:
+def api_searchs(ps: str) -> None:
     api_searchs = f"https://api.github.com/search/users?q={ps}"
 
     return api_searchs
 
-def api_repos(ps: str) -> str:
+def api_repos(ps: str) -> None:
     api_repos = f"https://api.github.com/users/{ps}/repos"
 
     return api_repos
