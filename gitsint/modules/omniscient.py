@@ -1,7 +1,7 @@
 import requests, time
 import utils
 
-class xrai:
+class commit:
     def __init__(self, username: str):
 
         self.username = username
@@ -29,7 +29,7 @@ class xrai:
                         pseudos[pseudo] = 1
 
         if len(pseudos) > 0:
-            print(f"\n[OMINISCIENT] Related name{'s' if len(pseudo) > 1 else ''} to account :")
+            print(f"\n[+] Related name{'s' if len(pseudo) > 1 else ''} to account :")
             for pseudo, count in pseudos.items():
                 print(f" - {pseudo} (found in {count} commit{'s' if count > 1 else ''})")
         else:
@@ -48,10 +48,10 @@ class xrai:
             users = response.json()["items"]
             num_users = len(users)
 
-            print("[OMINISCIENT] Spoofing...")
+            print("[+] Spoofing...")
             time.sleep(1)
             if num_users != 1:
-                print(f"{utils.Light_Green}\n[OMINISCIENT] [+] User{'s' if num_users > 1 else ''} were found with the same name as the target account !{utils.Reset}\n")
+                print(f"{utils.Light_Green}\n[+] User{'s' if num_users > 1 else ''} were found with the same name as the target account !{utils.Reset}\n")
                 for user in users:
                     username = user["login"]
                     if username != target_username and target_username in username:
