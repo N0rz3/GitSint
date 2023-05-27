@@ -15,7 +15,7 @@ def search(ps: str) -> str:
 
     emails = []
 
-    print(f"\n[SNIFFER] Commit sniffing...")
+    print(f"\n[+] Commit sniffing...")
     for event in events:
         if event["type"] == "PushEvent":
             commits = event["payload"]["commits"]
@@ -28,17 +28,17 @@ def search(ps: str) -> str:
                         emails.append((email, username))
     if emails:
         if len(emails) == 1:
-            print("[SNIFFER] Email found in commits !\n")
+            print("[+] Email found in commits !\n")
             for email, username in emails:
                 print(f"{utils.Light_Green}[+] [Email found in commits] {email} -> @{ps}{utils.Reset}")
 
         else:
-            print("[SNIFFER] Emails found in commits !\n")
+            print("[+] Emails found in commits !\n")
             print("[~] Several email options :")
             for email, username in emails:
                 print(f" - {username}, {email}")
     else:
-        print("[SNIFFER] Email not found in commits.")
+        print("[-] Email not found in commits.")
 
 
 def name(ps: str) -> str:
