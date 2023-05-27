@@ -7,7 +7,7 @@ import utils
 class core:
   def maincore():
       global DEBUG
-      os.system("cls && title GitSint v0.0.2 By Norze " if os.name == "nt" else "clear")
+      os.system("cls && title GitSint v1 By Norze " if os.name == "nt" else "clear")
       banner = f"""                
                     %%                       %%
                    %%%%%                   %%%%%
@@ -32,8 +32,8 @@ class core:
                         @@@@@@@@@@@@@@@@@
                         @@@@@@@@@@@@@@@@@
                                                                                                                               
-                    BY 🦊 Norze (GitSint v0.0.2)
-         {utils.Black}  🔥 subscribe to my github account !{utils.Reset}                                                                                                               
+                          BY 🦊 Norze 
+            {utils.Black}  🔥 subscribe to my github account !{utils.Reset}                                                                                                               
                                                                                            """.replace("*", utils.Black+"*"+utils.Reset).replace("/", utils.Light_Red+"/"+utils.Reset).replace("%", utils.Black+"%"+utils.Reset)
 
       print(banner)
@@ -151,7 +151,7 @@ Last account update: {data['updated_at'].replace("-", "/").replace("T", " ").rep
 
 [~] Possibles usernames variations -> {variation}, {variant}{va}
 """)
-          omniscient.xrai.spoof(username=ps)
+          omniscient.commit.spoof(username=ps)
           if sniffer.name(ps): 
             name = sniffer.name(ps).replace("@protonmail.ch", "").replace("@gmail.com", "").replace("@outlook.com", "").replace("@foxmail.com", "").replace("@hotmail.com", "").replace("@protonmail.com", "")
           else:
@@ -159,9 +159,9 @@ Last account update: {data['updated_at'].replace("-", "/").replace("T", " ").rep
           print(f"""
 {sniffer.search(ps)}
 [~] History of names used :""")
-          omniscient.xrai(username=ps)
+          omniscient.commit(username=ps)
           print(f"""
-[OMINISCIENT] The target uses these names [{tw} {na}, '{data['login']}', '{name}']\n""")
+[~] The target uses these names [{tw} {na}, '{data['login']}', '{name}']\n""")
 
           if name != "":
             print(f"""
