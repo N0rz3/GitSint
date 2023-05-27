@@ -32,8 +32,8 @@ class core:
                         @@@@@@@@@@@@@@@@@
                         @@@@@@@@@@@@@@@@@
                                                                                                                               
-                          BY 🦊 Norze 
-            {utils.Black}  🔥 subscribe to my github account !{utils.Reset}                                                                                                               
+                    BY 🦊 Norze (GitSint v0.0.2)
+         {utils.Black}  🔥 subscribe to my github account !{utils.Reset}                                                                                                               
                                                                                            """.replace("*", utils.Black+"*"+utils.Reset).replace("/", utils.Light_Red+"/"+utils.Reset).replace("%", utils.Black+"%"+utils.Reset)
 
       print(banner)
