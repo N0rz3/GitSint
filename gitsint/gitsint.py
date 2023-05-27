@@ -7,7 +7,7 @@ import utils
 class core:
   def maincore():
       global DEBUG
-      os.system("cls && title GitSint v1 By Norze " if os.name == "nt" else "clear")
+      os.system("cls && title GitSint v0.0.3 By Norze " if os.name == "nt" else "clear")
       banner = f"""                
                     %%                       %%
                    %%%%%                   %%%%%
@@ -32,8 +32,8 @@ class core:
                         @@@@@@@@@@@@@@@@@
                         @@@@@@@@@@@@@@@@@
                                                                                                                               
-                          BY 🦊 Norze 
-            {utils.Black}  🔥 subscribe to my github account !{utils.Reset}                                                                                                               
+                    BY 🦊 Norze (GitSint v0.0.3)
+        {utils.Black}  🔥 subscribe to my github account !{utils.Reset}                                                                                                               
                                                                                            """.replace("*", utils.Black+"*"+utils.Reset).replace("/", utils.Light_Red+"/"+utils.Reset).replace("%", utils.Black+"%"+utils.Reset)
 
       print(banner)
