@@ -37,7 +37,6 @@ options:
 ```sh
 python gitsint.py -u N0rz3
 ```
-https://user-images.githubusercontent.com/123885505/234613439-bf4c7bb4-349a-4dba-881d-e21cefa06ec7.mp4
 
 
 
