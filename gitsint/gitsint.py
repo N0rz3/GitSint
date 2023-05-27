@@ -10,14 +10,14 @@ class core:
       os.system("cls && title GitSint v0.0.3 By Norze " if os.name == "nt" else "clear")
       banner = f"""                
 
-               _____ _  _____  ____  _  _      _____ 
-              /  __// \/__ __\/ ___\/ \/ \  /|/__ __\
-              | |  _| |  / \  |    \| || |\ ||  / \  
-              | |_//| |  | |  \___ || || | \||  | |  
-              \____\\_/  \_/  \____/\_/\_/  \|  \_/                                       
-                                                                                                                              
-                    BY 🦊 Norze (GitSint v0.0.3)
-        {utils.Black}  🔥 subscribe to my github account !{utils.Reset}                                                                                                               
+ _____ _  _____  ____  _  _      _____ 
+/  __// \/__ __\/ ___\/ \/ \  /|/__ __\
+| |  _| |  / \  |    \| || |\ ||  / \  
+| |_//| |  | |  \___ || || | \||  | |  
+\____\\_/  \_/  \____/\_/\_/  \|  \_/  
+                                       
+BY 🦊 Norze (GitSint v0.0.3){utils.Black}
+🔥 subscribe to my github account !{utils.Reset}                                                                                                               
                                                                                            """
 
       print(banner)
