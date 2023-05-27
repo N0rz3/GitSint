@@ -52,32 +52,14 @@ During the launch there will be marked `DEBUG` if the debug is __**True**__ it i
 
 ## 🧾 **Summary**
 
-Main features :
+With GitSint you can find:
+- the names used
+- name variations
+- the names linked to the account
+- the emails linked to the account
+- the personal email of the account
+and many more things...
 
- - Used names
- - Related names
- - Name history
- - Pseudo variations
- - Potential friends
- - Related organizations
- - Personal email
- - Related emails
- - Potential emails generated with found names
- - Commit analysis
- - Main account information (bio, creation/modification date, name, location) if available
- - Accounts with the same or similar pseudonym
- - Potential duplicate accounts
- - JSON export
-
-Optimization:
-
- - No need for a key to use the tool.
-
-Default:
-
-- Rate limiting due to APIs used ? Change your IP thanks to VPN or Proxy.
-
-GitSint mainly uses APIs but also web scraping using the BeautifulSoup 4 library.
 
 Export of the main information in JSON format:
 ```json
