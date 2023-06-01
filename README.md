@@ -111,7 +111,3 @@ Subscribe to my GitHub account for more tools and programs ! 😉
 - 🖼️ Original logo : [orginal logo](https://dribbble.com/shots/16062020-3D-GitHub-Logo)
 - 🖼️ Custom logo : me 🤗
 - 👨‍💻 Source code : me 🤗
-
-## **🧑 Tester**
-
- Tool tester on 😸 [BlueRed](https://github.com/CSM-BlueRed)
