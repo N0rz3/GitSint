@@ -1,6 +1,0 @@
-bs4
-tqdm
-requests
-trio
-httpx
-argparse
