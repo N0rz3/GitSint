@@ -23,20 +23,133 @@ __Find information using open-source intelligence (OSINT) on a Github account.__
 
 
 - Details : 
-```yaml
-usage: python gitsint.py [-h / --help] [-u / --username <username>]
+```
+                                       
+ _____ _  _____  ____  _  _      _____ 
+/  __// \/__ __\/ ___\/ \/ \  /|/__ __\
+| |  _| |  / \  |    \| || |\ ||  / \  
+| |_//| |  | |  \___ || || | \||  | |  
+\____\\_/  \_/  \____/\_/\_/  \|  \_/  
 
+BY 🦊 Norze (GitSint v0.0.5)
+🔥 subscribe to my github account !
 
-options: 
-   -h, --help        show this help message and exit
-   -u, --username    <username>
-
+usage: gitsint.py [-h] <github username>
 ```
 
 
-### **📚 Example :**
+### **📚 Example input:**
 ```sh
-python gitsint.py -u N0rz3
+python gitsint.py N0rz3
+```
+
+
+### **📚 Example output:**
+```
+                                      
+ _____ _  _____  ____  _  _      _____ 
+/  __// \/__ __\/ ___\/ \/ \  /|/__ __\
+| |  _| |  / \  |    \| || |\ ||  / \  
+| |_//| |  | |  \___ || || | \||  | |  
+\____\\_/  \_/  \____/\_/\_/  \|  \_/  
+
+BY 🦊 Norze (GitSint v0.0.5)
+🔥 subscribe to my github account !
+
+
+Debug : True
+
+
+> ACCOUNT                                                                                  
+-------------------------------------                                                      
+                                                                                           
+> Identifiers:                                                                             
+Username: N0rz3                                                                            
+Name: Norze                                                                                
+ID: 123885505                                                                              
+                                                                                           
+> Social:                                                                                  
+Twitter: @None                                                                             
+                                                                                           
+> Details:                                                                                 
+Location: France                                                                           
+Biography: hello my name is norze  and I am 13 years, I develop mainly in python           
+                                                                                           
+> Avatar:                                                                                  
+https://avatars.githubusercontent.com/u/123885505?v=4                                      
+                                                                                           
+> Status:                                                                                  
+Site Admin: False                                                                          
+Type: User                                                                                 
+Highlights : null                                                                          
+Hireable: None                                                                             
+                                                                                           
+> Stats:                                                                                   
+Public repos: 7                                                                            
+Followers: 12                                                                              
+Following: 5                                                                               
+Gists: 0                                                                                   
+                                                                                           
+> Account                                                                                  
+Account created: 2023/01/29 15:04:08 � (UTC)                                               
+Last account update: 2023/06/01 19:37:48 � (UTC)                                           
+
+
+> REPOSITORIES STATS                                                    
+-------------------------------------                                   
+                                                                        
+[+] 7 repositories (7 sources, 0 fork, 0 archived, 0 mirror, 0 template)
+                                                                        
+[+] Language stats :                                                    
+ - Python (100.0%)     
+
+
+[-] No organization(s) found.               
+
+[~] Analyze potential(s) friend(s)...         
+                                              
+> FRIENDS                                     
+-------------------------------------         
+                                              
+[+] ?? potentials friends found !              
+                                              
+Friends list :                                                                         
+ - ....                                 
+ - ....                                 
+
+
+> HIDDEN IDENTITY                                             
+-------------------------------------                         
+                                                              
+[~] Possibles usernames variations -> Norzy, Norze, NORZE     
+                                                              
+[+] Spoofing...                                               
+[-] There is no user with the same username.                  
+                                                              
+[+] Commit sniffing...                                        
+[-] Email not found in commits.                               
+                                                              
+None                                                          
+[~] History of names used :                                   
+                                                              
+[+] Related names to account :                                
+ - Norze (found in 29 commits)                                
+                                                              
+[~] The target uses these names [ 'Norze', 'N0rz3', '']     
+
+
+
+[~] Potentials emails were generated from the nickname and variations !
+
+[?] N0rz3@github.com -> @N0rz3
+[?] N0rz3@hotmail.com -> @N0rz3
+[?] N0RZ3@yahoo.com -> @N0rz3
+[?] NoRZe@gmail.com -> @N0rz3
+[?] N0rz3N0rz3@icloud.com -> @N0rz3
+[?] NorzeNorze@yandex.com -> @Norze
+[?] N0rz3Norze@protonmail.com -> @N0rz3
+[?] Norze@hotmail.com -> @Norze
+[?] Norz3@icloud.com -> @Norze
 ```
 
 
