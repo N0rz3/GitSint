@@ -33,7 +33,12 @@ __Find information using open-source intelligence (OSINT) on a Github account.__
 BY 🦊 Norze (GitSint v0.0.5)
 🔥 subscribe to my github account !
 
-usage: gitsint.py [-h] <github username>
+usage: gitsint.py [-h] <github username> [--JSON]
+
+
+options:
+  -h, --help      show this help message and exit
+  --JSON          Export the data in JSON format
 ```
 
 
