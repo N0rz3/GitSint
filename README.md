@@ -91,8 +91,8 @@ Following: 5
 Gists: 0                                                                                   
                                                                                            
 > Account                                                                                  
-Account created: 2023/01/29 15:04:08 � (UTC)                                               
-Last account update: 2023/06/01 19:37:48 � (UTC)                                           
+Account created: 2023/01/29 15:04:08 🌐 (UTC)                                               
+Last account update: 2023/06/01 19:37:48 🌐 (UTC)                                           
 
 
 > REPOSITORIES STATS                                                    
