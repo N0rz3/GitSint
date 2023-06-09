@@ -1,3 +1,5 @@
+from colorama import *
+
 """
 Domain's list
 - mail (gmail, yahoo.fr, etc...)
@@ -45,16 +47,9 @@ def api_repos(ps: str) -> None:
 
 
 
-# List all colors used
-
-"""
-Colors palette used -> https://www.webucator.com/article/python-color-constants-module/
-Color rgb example (205,102,0) => Functional rgb color in python scripts example (\033[38;2;205;102;0m)
-"""
-
-Black = "\033[38;2;0;0;0m"
-Light_Red = "\033[38;2;255;48;48m"
-Reset = '\033[38;2;255;255;255m'
-Light_Green = "\033[38;2;193;255;193m"
-Light_Purple = "\033[38;2;191;62;255m"
-Yellow = "\033[38;2;255;255;0m"
+Black = Fore.BLACK
+Light_Red = Fore.LIGHTRED_EX
+Reset = Fore.RESET
+Light_Green = Fore.LIGHTGREEN_EX
+Light_Purple = Fore.LIGHTMAGENTA_EX
+Yellow = Fore.YELLOW
