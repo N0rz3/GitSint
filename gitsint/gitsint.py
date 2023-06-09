@@ -202,7 +202,7 @@ Email that corresponds to the target => {sniffer.name(ps)}
             with open(path, "w+", encoding="utf-8")as file:
                 file.write(json_form)
 
-                print(f"\r\n{utils.Light_Green} [+] Export finish in the path : {path} !")
+                print(f"\n{utils.Light_Green} [+] Export finish in the path : {path} !")
                 exit()
 
         else:
