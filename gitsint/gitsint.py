@@ -3,7 +3,6 @@ import json
 import random
 import os
 import time
-import trio
 import argparse
 from tqdm import tqdm
 from modules import git_src, repos, archived, mirrors, templates, type, languages_stats, friends, omniscient, organizations, sniffer, forks
