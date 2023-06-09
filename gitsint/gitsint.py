@@ -211,10 +211,7 @@ Email that corresponds to the target => {sniffer.name(ps)}
           print()
 
         exit()
-
-    def main():
-        trio.run(Core.maincore)
-
+        
 
 if __name__ == "__main__":
-    Core.main()
+    Core.maincore()
