@@ -3,3 +3,4 @@ tqdm
 requests
 httpx
 argparse
+colorama
