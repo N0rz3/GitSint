@@ -154,21 +154,21 @@ Email that corresponds to the target => {sniffer.name(ps)}
             print(f"""
 [~] Potentials emails were generated from the nickname and variations !
 
-[?] {data['login'] + "@" + random.choice(utils.domain_list)} -> @{data['login']}
-[?] {ps + "@" + random.choice(utils.domain_list)} -> @{ps}
-[?] {ps.replace(" ", "").upper() + "@" + random.choice(utils.domain_list)} -> @{ps}
-[?] {ps.replace(" ", "").upper().replace("3", "e").replace("1", "i").replace("8", "B").replace("0", "o") + "@" + random.choice(utils.domain_list)} -> @{ps}
-[?] {ps + ps + "@" + random.choice(utils.domain_list)} -> @{ps}
+[?] {data['login'] + "@" + random.choice(utils.domain_list)}
+[?] {ps + "@" + random.choice(utils.domain_list)}
+[?] {ps.replace(" ", "").upper() + "@" + random.choice(utils.domain_list)}
+[?] {ps.replace(" ", "").upper().replace("3", "e").replace("1", "i").replace("8", "B").replace("0", "o") + "@" + random.choice(utils.domain_list)}
+[?] {ps + ps + "@" + random.choice(utils.domain_list)}
 {sniffer.mail(ps)}
   """)
             if data['name'] != None:
-                print(f"""[?] {data['name'] + data['name'] + "@" + random.choice(utils.domain_list)} -> @{data['name']}
-[?] {data['login'] + data['name'] + "@" + random.choice(utils.domain_list)} -> @{data['login']}
-[?] {data['name'] + "@" + random.choice(utils.domain_list)} -> @{data['name']}
-[?] {data['name'].replace("e", "3").replace("i", "1").replace("E", "3").replace("I", "1").replace(" ", "").replace("A", "4").replace("a", "4").replace("b", "8").replace("B", "8") + "@" + random.choice(utils.domain_list)} -> @{data['name']}
+                print(f"""[?] {data['name'] + data['name'] + "@" + random.choice(utils.domain_list)}
+[?] {data['login'] + data['name'] + "@" + random.choice(utils.domain_list)}
+[?] {data['name'] + "@" + random.choice(utils.domain_list)}
+[?] {data['name'].replace("e", "3").replace("i", "1").replace("E", "3").replace("I", "1").replace(" ", "").replace("A", "4").replace("a", "4").replace("b", "8").replace("B", "8") + "@" + random.choice(utils.domain_list)}
   """)
             if data['twitter_username'] != None:
-                print(f"""[?] {data['twitter_username'] + "@" + random.choice(utils.domain_list)} -> @{data['twitter_username']}""")
+                print(f"""[?] {data['twitter_username'] + "@" + random.choice(utils.domain_list)}""")
 
             print(utils.Reset + "[?] = maybe, [~] = several, [-] = not, [+] = good")
 
