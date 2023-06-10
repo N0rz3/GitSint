@@ -145,15 +145,15 @@ None
 
 [~] Potentials emails were generated from the nickname and variations !
 
-[?] N0rz3@github.com -> @N0rz3
-[?] N0rz3@hotmail.com -> @N0rz3
-[?] N0RZ3@yahoo.com -> @N0rz3
-[?] NoRZe@gmail.com -> @N0rz3
-[?] N0rz3N0rz3@icloud.com -> @N0rz3
-[?] NorzeNorze@yandex.com -> @Norze
-[?] N0rz3Norze@protonmail.com -> @N0rz3
-[?] Norze@hotmail.com -> @Norze
-[?] Norz3@icloud.com -> @Norze
+[?] N0rz3@github.com
+[?] N0rz3@hotmail.com
+[?] N0RZ3@yahoo.com
+[?] NoRZe@gmail.com
+[?] N0rz3N0rz3@icloud.com
+[?] NorzeNorze@yandex.com
+[?] N0rz3Norze@protonmail.com
+[?] Norze@hotmail.com
+[?] Norz3@icloud.com
 ```
 
 
