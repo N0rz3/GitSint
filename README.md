@@ -89,7 +89,7 @@ Highlights : null
 Hireable: None                                                                             
                                                                                            
 > Stats:                                                                                   
-Public repos: 7                                                                            
+Public repos: 6                                                                         
 Followers: 12                                                                              
 Following: 5                                                                               
 Gists: 0                                                                                   
