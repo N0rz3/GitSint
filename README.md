@@ -102,7 +102,7 @@ Last account update: 2023/06/01 19:37:48 🌐 (UTC)
 > REPOSITORIES STATS                                                    
 -------------------------------------                                   
                                                                         
-[+] 7 repositories (7 sources, 0 fork, 0 archived, 0 mirror, 0 template)
+[+] 6 repositories (6 sources, 0 fork, 0 archived, 0 mirror, 0 template)
                                                                         
 [+] Language stats :                                                    
  - Python (100.0%)     
