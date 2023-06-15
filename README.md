@@ -1,7 +1,6 @@
 # **📌 GitSint Osint (__G.S.A.__) - 🔍 Github Scraper Accounts**
 
 ![gitsint](https://user-images.githubusercontent.com/123885505/234362710-b2c1de45-ea76-4f2d-a8d6-21ba8a66a9f3.jpg)
-![GitHub](https://img.shields.io/github/license/bellingcat/octosuite?style=flat)
 ![Python minimum version](https://img.shields.io/badge/Python-3.10%2B-brightgreen)
 
 ## **🕵️‍♂️ Find all traces left by a user !**
