@@ -11,7 +11,7 @@ __Find information using open-source intelligence (OSINT) on a Github account.__
 
 ## 🛠️ Requirements / Launch
 
-- [Python 3](https://www.python.org/downloads/release/python-370/)
+- [Python 3](https://www.python.org/downloads/)
 
 ```sh
 >> git clone https://github.com/N0rz3/GitSint.git
