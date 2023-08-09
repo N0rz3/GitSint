@@ -207,14 +207,8 @@ __**⚠️ DO NOT USE FOR MALICIOUS PURPOSES  ⚠️**__ 
 [GNU General Public License v3](https://www.gnu.org/licenses/gpl-3.0.fr.html)
 
 
-## **👋🏻 Socials**
-
-- 😺 My github -> N0rz3
-- 🤖 My discord -> NORZE#9666
-
 Do you like what I offer as content ?
 Subscribe to my GitHub account for more tools and programs ! 😉
-
 
 
 ## **💳 Credits**
