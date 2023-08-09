@@ -59,10 +59,6 @@ python gitsint.py N0rz3
 BY 🦊 Norze (GitSint v0.0.5)
 🔥 subscribe to my github account !
 
-
-Debug : True
-
-
 > ACCOUNT                                                                                  
 -------------------------------------                                                      
                                                                                            
