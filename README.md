@@ -1,219 +1,104 @@
-# **📌 GitSint Osint (__G.S.A.__) - 🔍 Github Scraper Accounts**
+<h1 align="center" id="title">🔎🐈 G i t S i n t</h1>
 
-![gitsint](https://user-images.githubusercontent.com/123885505/234362710-b2c1de45-ea76-4f2d-a8d6-21ba8a66a9f3.jpg)
-![Python minimum version](https://img.shields.io/badge/Python-3.10%2B-brightgreen)
+![](assets/logo.jpg)
+[![python version](https://img.shields.io/badge/Python-3.10%2B-brightgreen)](https://www.python.org/downloads/)
+[![license](https://img.shields.io/badge/License-GNU-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.fr.html)
 
-## **🕵️‍♂️ Find all traces left by a user !**
+# **😇 About GitSint**
+> 🕵️ GitSint v2.0 is an osint tool based on open source information retrieval through a GitHub account.
+> The tool mostly works with GitHub APIs.
+
+**Features of script**
+- fully async
+- asynchrone scraping 
+- menu in cli format (commands)
+
+**GitSint extracts various information like**
+- login
+- name 
+- id
+- biography
+- location
+- avatar
+- repos
+- gists
+- dates
+- X (Twitter)
+- GitLab
+- blog
+- company
+- organizations
+- friends
+- contributions
+- emails related
+- names related
+- names used
+- email to account
+
+👀 **The information found by GitSint is presented in the form of a tree structure for better navigation.**
+![](assets/example.png)
+
+## **🎉What's new ?**
+
+- Fully asynchrone system
+- Completely redone design
+- Adding email to username
+- GitLab name
+- Information searches from an organization
 
 
-__Find information using open-source intelligence (OSINT) on a Github account.__
-
-
-## 🛠️ Requirements / Launch
+## **📦 Installation**
 
 - [Python 3](https://www.python.org/downloads/)
+- [Git](https://git-scm.com/downloads)
 
-```sh
->> git clone https://github.com/N0rz3/GitSint.git
->> cd GitSint\gitsint
->> pip install -r requirements.txt
+```
+$ git clone https://github.com/N0rz3/GitSint.git
+$ cd ./GitSint
+$ pip install -r requirements.txt
 ```
 
+## **🎲 Usage**
 
-- Details : 
 ```
-                                       
- _____ _  _____  ____  _  _      _____ 
-/  __// \/__ __\/ ___\/ \/ \  /|/__ __\
-| |  _| |  / \  |    \| || |\ ||  / \  
-| |_//| |  | |  \___ || || | \||  | |  
-\____\\_/  \_/  \____/\_/\_/  \|  \_/  
-
-BY 🦊 Norze (GitSint v0.0.5)
-🔥 subscribe to my github account !
-
-usage: gitsint.py [-h] <github username> [--JSON]
-
+usage: gitsint.py [-h] [-u [USERNAME]] [-o [ORGANIZATION]] [-e [EMAIL]] [-f [FRIENDS]]
 
 options:
-  -h, --help      show this help message and exit
-  --JSON          Export the data in JSON format
+  -h, --help            show this help message and exit
+  -u [USERNAME], --username [USERNAME]
+                        searches all public information by username
+  -o [ORGANIZATION], --organization [ORGANIZATION]
+                        searches all public information by organization
+  -e [EMAIL], --email [EMAIL]
+                        search for an account by email
+  -f [FRIENDS], --friends [FRIENDS]
+                        search for potential friends by username
 ```
 
+## 🌞 More
 
-### **📚 Example input:**
-```sh
-python gitsint.py N0rz3
-```
+###  🛡️ Protection
 
+If you don't want to display your email address in the commits and leave it private, you just have to go to 
 
-### **📚 Example output:**
-```
-                                      
- _____ _  _____  ____  _  _      _____ 
-/  __// \/__ __\/ ___\/ \/ \  /|/__ __\
-| |  _| |  / \  |    \| || |\ ||  / \  
-| |_//| |  | |  \___ || || | \||  | |  
-\____\\_/  \_/  \____/\_/\_/  \|  \_/  
+**settings > emails**  
+and tick these two parameters
 
-BY 🦊 Norze (GitSint v0.0.5)
-🔥 subscribe to my github account !
+![](assets/protection.png)
 
-> ACCOUNT                                                                                  
--------------------------------------                                                      
-                                                                                           
-> Identifiers:                                                                             
-Username: N0rz3                                                                            
-Name: Norze                                                                                
-ID: 123885505                                                                              
-                                                                                           
-> Social:                                                                                  
-Twitter: @None                                                                             
-                                                                                           
-> Details:                                                                                 
-Location: France                                                                           
-Biography: hello my name is norze  and I am 13 years, I develop mainly in python           
-                                                                                           
-> Avatar:                                                                                  
-https://avatars.githubusercontent.com/u/123885505?v=4                                      
-                                                                                           
-> Status:                                                                                  
-Site Admin: False                                                                          
-Type: User                                                                                 
-Highlights : null                                                                          
-Hireable: None                                                                             
-                                                                                           
-> Stats:                                                                                   
-Public repos: 6                                                                         
-Followers: 12                                                                              
-Following: 5                                                                               
-Gists: 0                                                                                   
-                                                                                           
-> Account                                                                                  
-Account created: 2023/01/29 15:04:08 🌐 (UTC)                                               
-Last account update: 2023/06/01 19:37:48 🌐 (UTC)                                           
+*I invite you to read this guide which will explain how to protect your personal data on GitHub. [(DOC)](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository)*
 
+### **✔️ / ❌ Rules**
 
-> REPOSITORIES STATS                                                    
--------------------------------------                                   
-                                                                        
-[+] 6 repositories (6 sources, 0 fork, 0 archived, 0 mirror, 0 template)
-                                                                        
-[+] Language stats :                                                    
- - Python (100.0%)     
+**this tool was designed for educational purposes only and is not intended for any mischievous use, I am not responsible for its use.**
 
+### **📜 License**
 
-[-] No organization(s) found.               
+**This project is [License GPL v3](https://www.gnu.org/licenses/gpl-3.0.fr.html) be sure to follow all rules 👍**
 
-[~] Analyze potential(s) friend(s)...         
-                                              
-> FRIENDS                                     
--------------------------------------         
-                                              
-[+] ?? potentials friends found !              
-                                              
-Friends list :                                                                         
- - ....                                 
- - ....                                 
+### **💖 Thanks**
+If you like what i do please subscribe 💖. And if you find this tool is useful don't forget to star 🌟
 
+**💶 Support me 👇**
 
-> HIDDEN IDENTITY                                             
--------------------------------------                         
-                                                              
-[~] Possibles usernames variations -> Norzy, Norze, NORZE     
-                                                              
-[+] Spoofing...                                               
-[-] There is no user with the same username.                  
-                                                              
-[+] Commit sniffing...                                        
-[-] Email not found in commits.                               
-                                                              
-None                                                          
-[~] History of names used :                                   
-                                                              
-[+] Related names to account :                                
- - Norze (found in 29 commits)                                
-                                                              
-[~] The target uses these names [ 'Norze', 'N0rz3', '']     
-
-
-
-[~] Potentials emails were generated from the nickname and variations !
-
-[?] N0rz3@github.com
-[?] N0rz3@hotmail.com
-[?] N0RZ3@yahoo.com
-[?] NoRZe@gmail.com
-[?] N0rz3N0rz3@icloud.com
-[?] NorzeNorze@yandex.com
-[?] N0rz3Norze@protonmail.com
-[?] Norze@hotmail.com
-[?] Norz3@icloud.com
-```
-
-
-
-
-
-
-During the launch there will be marked `DEBUG` if the debug is __**True**__ it is that the request to the API went well otherwise the debug will be __**False**__ which means that there was an error during the query as:
-- A debit limit (if there have already been requests made before in a short period of time)
-
-- The account does not exist (spelling error)
-
-
-## 🧾 **Summary**
-
-With GitSint you can find:
-- the names used
-- name variations
-- the names linked to the account
-- the emails linked to the account
-- the personal email of the account
-and many more things...
-
-
-Export of the main information in JSON format:
-```json
-[
-    {
-        "login": "example",
-        "name": "examples",
-        "id": "10000000",
-        "avatar": "avatar.url/url",
-        "twitter": "example@twitter",
-        "email": "example@example.com"
-    }
-]
-```
-
-
-
-## **✔️/❌ Rules**
-
-**Disclaimer**
-
-This tool was built solely for educational purposes, and I am not responsible for its use.
-
-Using this tool in a paid service is strictly prohibited.
-Please use it only for personal investigation purposes or open-source projects.
-
-__**⚠️ DO NOT USE FOR MALICIOUS PURPOSES  ⚠️**__ 
-
-
-
-## **📝 License**
-
-[GNU General Public License v3](https://www.gnu.org/licenses/gpl-3.0.fr.html)
-
-
-Do you like what I offer as content ?
-Subscribe to my GitHub account for more tools and programs ! 😉
-
-
-## **💳 Credits**
-
-- ✏️ Inspiration : gitfive by [mxrch](https://github.com/mxrch)
-- 🖼️ Original logo : [orginal logo](https://dribbble.com/shots/16062020-3D-GitHub-Logo)
-- 🖼️ Custom logo : me 🤗
-- 👨‍💻 Source code : me 🤗
+<a href="https://www.buymeacoffee.com/norze" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="50" ></a> 
