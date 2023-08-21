@@ -89,7 +89,7 @@ and tick these two parameters
 *I invite you to read this guide which will explain how to protect your personal data on GitHub. [(DOC)](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository)*
 
 ### **🗿 Contributions**
-Make a [pull request](https://github.com/N0rz3/GitSint/pulls) with all the details needed to contribute of the chat work 😺
+Make a [pull requests](https://github.com/N0rz3/GitSint/pulls) with all the details needed to contribute of the chat work 😺
 
 ### **✔️ / ❌ Rules**
 
