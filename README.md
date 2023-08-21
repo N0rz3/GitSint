@@ -15,7 +15,8 @@
 
 **GitSint extracts various information like**
 - login
-- name 
+- name
+- email
 - id
 - biography
 - location
