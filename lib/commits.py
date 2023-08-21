@@ -101,7 +101,7 @@ class Name:
 
         else:
             return {
-                'message': f'{user} has not had several names',
+                'message': f'No names found in commits.',
                 'names':{
                     'name': None,
                     'count': 0
