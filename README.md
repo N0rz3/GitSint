@@ -5,7 +5,7 @@
 [![license](https://img.shields.io/badge/License-GNU-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.fr.html)
 
 # **😇 About GitSint**
-> 🕵️ GitSint v2.0 is an osint tool based on open source information retrieval through a GitHub account.
+> 🕵️ GitSint v2.0 is an osint tool based on open source information retrieval through a GitHub username/organization/email.
 > The tool mostly works with GitHub APIs.
 
 **Features of script**
