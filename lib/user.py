@@ -78,5 +78,7 @@ async def trackx(user):
             exit()
 
         if 'names' in username_history:
+            if username_history['message'] == "No names found in commits.":
+                exit()
             for name_data in username_history['names']:
                 print(f"|        ├──Name: {name_data['name']} (found in {name_data['count']} commit{'s' if name_data['count'] > 1 else ''})")
