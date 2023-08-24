@@ -27,7 +27,7 @@
 - X (Twitter)
 - GitLab
 - blog
-- company
+- company (+ domain)
 - organizations
 - friends
 - contributions
