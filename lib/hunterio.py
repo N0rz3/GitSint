@@ -15,6 +15,11 @@ class Hunter:
 
             if '"data": []' in r.text:
                 domain = None
+
+                return {
+                    'message': f'Company: {company}'
+                }
+              
             else:
                 domain = r.json()['data'][0]['domain']
 
