@@ -21,10 +21,28 @@ class Hunter:
                 }
               
             else:
-                domain = r.json()['data'][0]['domain']
+                count = 0
+                datas= r.json()['data']
 
-                return {
-                    'message': f'Company: {company} - (Hunter.io) {company} => {domain}'
+                for data in datas:
+                    name = data['name']
+
+                    if name == company:
+                        count += 1
+                        domain = data['domain']
+                        break
+                    
+                    else:
+                        continue
+
+                if count > 0:
+                    return {
+                        'message': f'Company: {company} - (Hunter.io) {company} => {domain}'
+                    }
+                
+                else:
+                    return {
+                        'message': f'Company: {company}'
                 }
         else:
             return {
