@@ -4,11 +4,9 @@ from .profile import user_infos
 class Hunter:
     async def find_domain(user):
         infos = await user_infos.profile_scraping(user=user)
-
         company = infos['profile']['company']
 
         if company != None:
-
             params = {
                 'query': str(company).lower()
             }
@@ -17,7 +15,6 @@ class Hunter:
 
             if '"data": []' in r.text:
                 domain = "Company"
-
             else:
                 domain = r.json()['data'][0]['domain']
 
