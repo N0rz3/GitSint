@@ -46,6 +46,7 @@
 - Adding email to username
 - GitLab name
 - Information searches from an organization
+- Search for domains via Hunter.io
 
 
 ## **📦 Installation**
