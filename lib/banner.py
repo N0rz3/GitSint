@@ -6,7 +6,7 @@ banner = f"""{RED}
 -(((---(((----------------------  
  / _] |_   _/' _/| |  \| |_   _| 
 | [/\ | | | `._`.| | | ' | | |   
- \__/_| |_| |___/|_|_|\__| |_|   {PURPLE}{italic("GitSint v2.0 🥳")}{RED}
+ \__/_| |_| |___/|_|_|\__| |_|   {PURPLE}{italic("GitSint v2.1 🐙")}{RED}
      
           {WHITE}BY Norze
   GitHub {RED}OSINT{WHITE} tool made with 💖
@@ -18,7 +18,7 @@ banner2 = f"""{RED}
 -(((---(((----------------------  
  / _] |_   _/' _/| |  \| |_   _| 
 | [/\ | | | `._`.| | | ' | | |   
- \__/_| |_| |___/|_|_|\__| |_|   {PURPLE}{italic("GitSint v2.0 🥳")}{RED}
+ \__/_| |_| |___/|_|_|\__| |_|   {PURPLE}{italic("GitSint v2.1 🐙")}{RED}
      
           {WHITE}BY Norze
   GitHub {RED}OSINT{WHITE} tool made with 💖
