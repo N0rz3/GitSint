@@ -27,7 +27,7 @@ class Hunter:
                 for data in datas:
                     name = data['name']
 
-                    if name == company:
+                    if str(name).lower() == str(company).lower():
                         count += 1
                         domain = data['domain']
                         break
