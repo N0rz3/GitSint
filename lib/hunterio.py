@@ -14,7 +14,7 @@ class Hunter:
             r = await Requests("https://hunter.io/v2/domains-suggestion", params=params).get()
 
             if '"data": []' in r.text:
-                domain = "Company"
+                domain = None
             else:
                 domain = r.json()['data'][0]['domain']
 
