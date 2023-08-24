@@ -3,6 +3,7 @@ from .friends import *
 from .profile import *
 from .text import *
 from .gitlab import user_test_in_gitlab
+from .hunterio import Hunter
 
 async def trackx(user):
     profile = await user_infos.profile_scraping(user)
@@ -15,6 +16,7 @@ async def trackx(user):
     num_contributors = await user_infos.contributions(user)
     gitlab = await user_test_in_gitlab(user)
     email_target = await Email.resolv_email(user)
+    company = await Hunter.find_domain(user)
 
     print(f"{RED}{user}{WHITE}")
     print(f"├──Profile")
@@ -47,7 +49,7 @@ async def trackx(user):
     print(f"|")
     print(f"├──URL")
     print(f"|  ├──Blog: {profile['blog']}")
-    print(f"|  └──Company: {profile['company']}")
+    print(f"|  └──{company['message']}")
     print(f"|")
     print(f"├──Organization(s)")
     for org in orgs.get('organization', []):
