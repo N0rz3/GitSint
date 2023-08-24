@@ -15,10 +15,7 @@ class user_infos:
             count = count[0].text.strip()
 
             user_infos.list.append(count)
-
-        
-
-
+                
         return {
                 'public_repos': int(user_infos.list[1]) + int(user_infos.list[0]) + int(user_infos.list[2]) + int(user_infos.list[3]) + int(user_infos.list[4]),
                 'sources': user_infos.list[1],
