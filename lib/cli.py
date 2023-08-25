@@ -65,7 +65,7 @@ async def parser():
 
     elif args.email:
             print(banner)
-            choice = input("\n[?] Do you want to log in? (y/n): ")
+            choice = input("\n[?] Do you want to re-log in? (y/n): ")
             if choice.lower() == "y":
                 Basic.login()
             else:
