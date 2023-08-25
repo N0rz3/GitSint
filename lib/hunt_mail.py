@@ -90,7 +90,7 @@ class Basic:
                 if not name:
                     exit(f"\n[-] {email} has not GitHub account.")
                 
-                print(f"\n[+] Username => {name}")
+                print(f"\n[+] Username => {name['login']}")
                     
 
                 return repo
