@@ -120,13 +120,13 @@ class Basic:
         print(italic(f"\n-> {BLACK}https://github.com/settings/tokens (check the options of repo, delete_repo, user:email){WHITE}"))
         token = input("[?] Please enter your token: ")
 
-        with open("creads.txt", "w") as file:
+        with open("creds.txt", "w") as file:
             file.write("Name:" + name + "\n" + "Token:" + token)
             exit(f"{GREEN}[+] Creds saved!{WHITE}")       
 
     async def launch(email):
         try:
-            with open("creads.txt", "r") as file:
+            with open("creds.txt", "r") as file:
                 reads = file.read().split('\n')
 
             user = None
