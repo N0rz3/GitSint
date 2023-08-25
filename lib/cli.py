@@ -65,13 +65,9 @@ async def parser():
 
     elif args.email:
             print(banner)
-            choice = input("\n[?] Do you want to re-log in? (y/n): ")
-            if choice.lower() == "y":
-                Basic.login()
-            else:
-                email = args.email
-                await Basic.launch(email=email)
-                exit()
+            email = args.email
+            await Basic.launch(email=email)
+            exit()
 
     elif args.friends:
         username = args.friends
