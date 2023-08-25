@@ -105,7 +105,8 @@ Make a [pull requests](https://github.com/N0rz3/GitSint/pulls) with all the deta
 **This project is [License GPL v3](https://www.gnu.org/licenses/gpl-3.0.fr.html) be sure to follow all rules 👍**
 
 ### **💖 Thanks**
-If you like what i do please subscribe 💖. And if you find this tool is useful don't forget to star 🌟
+- If you like what i do please subscribe 💖. And if you find this tool is useful don't forget to star 🌟
+- This tool is inspired by [GitFive](https://github.com/mxrch/GitFive) made by [mxrch](https://github.com/mxrch)
 
 **💶 Support me 👇**
 
