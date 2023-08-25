@@ -88,7 +88,7 @@ class Basic:
 
                 name = r.json()[0]['author']
                 if not name:
-                    print(f"\n[-] Email provided seems to not have a github account.")
+                    print(f"\n[-] {email} has not GitHub account.")
                 else:
                     print(f"\n[+] Username => {name['login']}")
                     
@@ -140,8 +140,9 @@ class Basic:
 
             if user and token:
                 await Basic.delete(token, user, email)
-            else:
-                print("[-] Username and/or token not found in the file.")
 
         except FileNotFoundError:
-            print("[-] Please log in.")
+            print("[-] Credentials not found.")
+            print("you have to log in / re-log in")
+
+            Basic.login()
