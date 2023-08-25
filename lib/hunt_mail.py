@@ -122,7 +122,7 @@ class Basic:
 
         with open("creads.txt", "w") as file:
             file.write("Name:" + name + "\n" + "Token:" + token)
-            exit(f"{GREEN}[+] Creads saved!{WHITE}")       
+            exit(f"{GREEN}[+] Creds saved!{WHITE}")       
 
     async def launch(email):
         try:
