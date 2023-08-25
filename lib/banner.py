@@ -39,5 +39,5 @@ options:
                         search for an account by email
   -f [FRIENDS], --friends [FRIENDS]
                         search for potential friends by username
-  -l, --light           light mod with option '-e'
+  -l, --light           light mode with option '-e'
 """
