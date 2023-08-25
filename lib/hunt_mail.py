@@ -116,7 +116,7 @@ class Basic:
 #################################################################################
 
     def login():
-        name = input("\n[?] Please enter your username: ")
+        name = input("\n[?] Please enter your username (recommended to use this option with a secondary account): ")
 
         print(italic(f"\n-> {BLACK}https://github.com/settings/tokens (check the options of repo, delete_repo, user:email){WHITE}"))
         token = input("[?] Please enter your token: ")
