@@ -6,7 +6,7 @@ banner = f"""{RED}
 -(((---(((----------------------  
  / _] |_   _/' _/| |  \| |_   _| 
 | [/\ | | | `._`.| | | ' | | |   
- \__/_| |_| |___/|_|_|\__| |_|   {PURPLE}{italic("GitSint v2.1")}{RED} 🐙
+ \__/_| |_| |___/|_|_|\__| |_|   {PURPLE}{italic("GitSint v2.2 🐙")}{RED}
      
           {WHITE}BY Norze
   GitHub {RED}OSINT{WHITE} tool made with 💖
@@ -18,7 +18,7 @@ banner2 = f"""{RED}
 -(((---(((----------------------  
  / _] |_   _/' _/| |  \| |_   _| 
 | [/\ | | | `._`.| | | ' | | |   
- \__/_| |_| |___/|_|_|\__| |_|   {PURPLE}{italic("GitSint v2.1")}{RED} 🐙
+ \__/_| |_| |___/|_|_|\__| |_|   {PURPLE}{italic("GitSint v2.2 🐙")}{RED}
      
           {WHITE}BY Norze
   GitHub {RED}OSINT{WHITE} tool made with 💖
@@ -27,7 +27,7 @@ banner2 = f"""{RED}
 ☕ Donations: https://www.buymeacoffee.com/norze
 
 
-usage: gitsint.py [-h] [-u [USERNAME]] [-o [ORGANIZATION]] [-e [EMAIL]] [-f [FRIENDS]]
+usage: gitsint.py [-h] [-u [USERNAME]] [-o [ORGANIZATION]] [-e [EMAIL]] [-f [FRIENDS]] [-l]
 
 options:
   -h, --help            show this help message and exit
@@ -39,4 +39,5 @@ options:
                         search for an account by email
   -f [FRIENDS], --friends [FRIENDS]
                         search for potential friends by username
+  -l, --light           light mod with option '-e'
 """
