@@ -66,7 +66,7 @@ class Basic:
                 "content": "R2l0U2ludA=="
             }
             
-            TempPrint("[+] Pushing...").Tprint()
+            TempPrint("[+] Spoofing...").Tprint()
             
             response = await Requests(f"https://api.github.com/repos/{user}/{repo}/contents/gitsint.txt", headers=headers, json=data).put()
             if response.status_code == 201:
