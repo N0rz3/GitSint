@@ -39,7 +39,7 @@ async def parser():
     parser.add_argument(
         '-l', '--light',
         action='store_true',
-        help="light mod with option '-e'"
+        help="light mode with option '-e'"
     )
 
     args = parser.parse_args()
