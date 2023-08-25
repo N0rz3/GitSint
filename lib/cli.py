@@ -1,7 +1,7 @@
 import argparse
 from .banner import *
 from lib.organizations import print_organization_info
-from lib.hunt_mail import hunt
+from lib.hunt_mail import Light, Basic
 from lib.friends import output
 from lib.user import trackx
 
@@ -36,7 +36,11 @@ async def parser():
         default=None,
         help='search for potential friends by username'
     )
-
+    parser.add_argument(
+        '-l', '--light',
+        action='store_true',
+        help="light mod with option '-e'"
+    )
 
     args = parser.parse_args()
 
@@ -52,11 +56,22 @@ async def parser():
         await print_organization_info(org)
         exit()
 
+    elif args.light:
+        if args.email:
+            email = args.email
+            print(banner)
+            await Light.hunt(email)
+            exit()
+
     elif args.email:
-        email = args.email
-        print(banner)
-        await hunt(email)
-        exit()
+            print(banner)
+            choice = input("\n[?] Do you want to log in? (y/n): ")
+            if choice.lower() == "y":
+                Basic.login()
+            else:
+                email = args.email
+                await Basic.launch(email=email)
+                exit()
 
     elif args.friends:
         username = args.friends
