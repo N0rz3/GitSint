@@ -78,7 +78,7 @@ options:
                         search for potential friends by username
   -l, --light           light mode with option '-e'
 ```
-[Light mod] run light mode with this usage: `python gitsint.py -l -e <email address>`
+[Light mod] run light mode with this usage: `python ./gitsint.py -l -e <email address>`
 
 ## 🌞 More
 
