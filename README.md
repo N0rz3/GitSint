@@ -63,7 +63,7 @@ $ pip install -r requirements.txt
 ## **🎲 Usage**
 
 ```
-usage: gitsint.py [-h] [-u [USERNAME]] [-o [ORGANIZATION]] [-e [EMAIL]] [-f [FRIENDS]]
+usage: gitsint.py [-h] [-u [USERNAME]] [-o [ORGANIZATION]] [-e [EMAIL]] [-f [FRIENDS]] [-l]
 
 options:
   -h, --help            show this help message and exit
@@ -75,6 +75,7 @@ options:
                         search for an account by email
   -f [FRIENDS], --friends [FRIENDS]
                         search for potential friends by username
+  -l, --light           light mod with option '-e'
 ```
 
 ## 🌞 More
