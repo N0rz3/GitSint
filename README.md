@@ -21,6 +21,8 @@
 - biography
 - location
 - avatar
+- followers
+- following
 - repos
 - gists
 - dates
