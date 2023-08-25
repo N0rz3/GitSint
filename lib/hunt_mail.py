@@ -20,7 +20,7 @@ class Light:
                 name = items[0]['login']
 
                 TempPrint(f"{GREEN}[+] Account found !{WHITE}").Tprint()
-                print(f"[+] Username => {name}")
+                print(f"[+] Username => {name['login']}")
                 exit()
 
             except (KeyError, ValueError):
