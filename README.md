@@ -47,7 +47,7 @@
 - GitLab name
 - Information searches from an organization
 - Search for domains via Hunter.io
-- Light mod 
+- Light mode
 
 
 ## **📦 Installation**
