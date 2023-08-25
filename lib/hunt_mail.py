@@ -86,13 +86,12 @@ class Basic:
                 TempPrint("[+] Pushing...").Tprint()
                 r = await Requests(f"https://api.github.com/repos/{user}/{repo}/commits", headers=headers).get()
 
-                try:
-                            TempPrint(f"{GREEN}[+] Account found !{WHITE}").Tprint()
-                            name = "\n[+] Username => " + r.json()[0]['author']['login']
-                except (KeyError, ValueError):
-                            name = "\n[-] Push error." # rare result
-
-                print(name)
+                name = r.json()[0]['author']
+                if not name:
+                    exit(f"[-] {email} has not GitHub account.")
+                
+                print(f"[+] Username => {name}")
+                    
 
                 return repo
 
