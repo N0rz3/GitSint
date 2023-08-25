@@ -8,7 +8,7 @@ class Light:
         api = "https://api.github.com/search/users?q={}".format(email)
 
         r = await Requests(api).get()
-        TempPrint("[~] GitHub account tracking...").Tprint()
+        TempPrint("[~] 🔎 GitHub account tracking...").Tprint()
 
         if r.status_code == 200:
             try:
@@ -20,7 +20,7 @@ class Light:
                 name = items[0]['login']
 
                 TempPrint(f"{GREEN}[+] Account found !{WHITE}").Tprint()
-                print(f"[+] Username => {name['login']}")
+                print(f"[+] 🤙 Username => {name['login']}")
                 exit()
 
             except (KeyError, ValueError):
@@ -65,15 +65,14 @@ class Basic:
                 },
                 "content": "R2l0U2ludA=="
             }
-            
-            TempPrint("[+] Spoofing...").Tprint()
-            
+
+            TempPrint("[+] 🎭 Spoofing...").Tprint()
             response = await Requests(f"https://api.github.com/repos/{user}/{repo}/contents/gitsint.txt", headers=headers, json=data).put()
             if response.status_code == 201:
                 success = True
 
             return success, repo
-        
+
         else:
             exit()
 
@@ -85,15 +84,14 @@ class Basic:
                     'authorization': f'token {token}'
                 }
 
-                TempPrint("[+] Pushing...").Tprint()
+                TempPrint("[+] 🐈 Pushing...").Tprint()
                 r = await Requests(f"https://api.github.com/repos/{user}/{repo}/commits", headers=headers).get()
 
                 name = r.json()[0]['author']
                 if not name:
-                    print(f"\n[-] {email} has not GitHub account.")
+                    print(f"\n[-] 😔 {email} has not GitHub account.")
                 else:
-                    print(f"\n[+] Username => {name['login']}")
-                    
+                    print(f"\n[+] 🤙 Username => {name['login']}")
 
                 return repo
 
