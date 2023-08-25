@@ -88,7 +88,7 @@ class Basic:
 
                 name = r.json()[0]['author']
                 if not name:
-                    print(f"\n[-] {email} has not GitHub account.")
+                    print(f"\n[-] Email provided seems to not have a github account.")
                 else:
                     print(f"\n[+] Username => {name['login']}")
                     
