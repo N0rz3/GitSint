@@ -99,13 +99,13 @@ class Basic:
                 exit("\n[!] Commit error.")
 
     async def delete(token, user, email):
-        repos = await Basic.push(token, user, email)
+        repo = await Basic.push(token, user, email)
 
         headers = {
             'authorization': f'token {token}'
         }
 
-        r = await Requests(f"https://api.github.com/repos/{user}/{repos}", headers=headers).delete()
+        r = await Requests(f"https://api.github.com/repos/{user}/{repo}", headers=headers).delete()
 
         if r.status_code == 204:
             print(italic("[+] Repo deleted."))
