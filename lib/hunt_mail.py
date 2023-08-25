@@ -89,8 +89,8 @@ class Basic:
                 name = r.json()[0]['author']
                 if not name:
                     print(f"\n[-] {email} has not GitHub account.")
-                
-                print(f"\n[+] Username => {name['login']}")
+                else:
+                    print(f"\n[+] Username => {name['login']}")
                     
 
                 return repo
