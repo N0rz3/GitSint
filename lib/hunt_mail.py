@@ -44,7 +44,7 @@ class Basic:
         r = await Requests("https://api.github.com/user/repos", headers=headers, json=data).post()
 
         if r.status_code == 201:
-            TempPrint("[+] Creation of repo...").Tprint()
+            TempPrint("[+] 🎭 Creation of repo...").Tprint()
             success = True
         
         return success, repo
@@ -84,7 +84,7 @@ class Basic:
                     'authorization': f'token {token}'
                 }
 
-                TempPrint("[+] 🐈 Pushing...").Tprint()
+                TempPrint("[+] 🎭 Pushing...").Tprint()
                 r = await Requests(f"https://api.github.com/repos/{user}/{repo}/commits", headers=headers).get()
 
                 name = r.json()[0]['author']
