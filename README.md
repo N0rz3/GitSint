@@ -66,7 +66,7 @@ $ pip install -r requirements.txt
 ## **🎲 Usage**
 
 ```
-usage: gitsint.py [-h] [-u [USERNAME]] [-o [ORGANIZATION]] [-e [EMAIL]] [-f [FRIENDS]] [-l]
+usage: gitsint.py [-h] [-u [USERNAME]] [-o [ORGANIZATION]] [-e [EMAIL]] [-f [FRIENDS]] [-l] [-a [AVATAR]]
 
 options:
   -h, --help            show this help message and exit
@@ -79,6 +79,8 @@ options:
   -f [FRIENDS], --friends [FRIENDS]
                         search for potential friends by username
   -l, --light           light mode with option '-e'
+  -a [AVATAR], --avatar [AVATAR]
+                        download profile picture (avatar) by username
 ```
 [Light mode] run light mode with this usage: `python ./gitsint.py -l -e <email address>`
 
