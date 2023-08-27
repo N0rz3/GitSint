@@ -4,6 +4,7 @@ from lib.organizations import print_organization_info
 from lib.hunt_mail import Light, Basic
 from lib.friends import output
 from lib.user import trackx
+from lib.avatar import downloader
 
 async def parser():
     parser = argparse.ArgumentParser()
@@ -41,6 +42,13 @@ async def parser():
         action='store_true',
         help="light mode with option '-e'"
     )
+    parser.add_argument(
+        '-a', '--avatar',
+        nargs='?',
+        type=str,
+        default=None,
+        help='download profile picture (avatar) by username'
+    )
 
     args = parser.parse_args()
 
@@ -73,6 +81,12 @@ async def parser():
         username = args.friends
         print(banner)
         await output(user=username)
+        exit()
+
+    elif args.avatar:
+        u = args.avatar
+        print(banner)
+        await downloader(name=u)
         exit()
 
     else:
