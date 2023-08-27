@@ -20,7 +20,7 @@
 - id
 - biography
 - location
-- avatar
+- avatar (+ upload)
 - followers
 - following
 - repos
