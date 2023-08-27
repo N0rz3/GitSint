@@ -39,7 +39,7 @@ options:
                         search for an account by email
   -f [FRIENDS], --friends [FRIENDS]
                         search for potential friends by username
-  -l, --light           light mode with option '-e'
   -a [AVATAR], --avatar [AVATAR]
                         download profile picture (avatar) by username
+  -l, --light           light mode with option '-e'
 """
