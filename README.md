@@ -50,6 +50,7 @@
 - Information searches from an organization
 - Search for domains via Hunter.io
 - Light mode
+- Avatar upload
 
 
 ## **📦 Installation**
