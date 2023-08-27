@@ -84,7 +84,7 @@ options:
   -l, --light           light mode with option '-e'
 
 ```
-[Light mode] run light mode with this usage: `python ./gitsint.py -l -e <email address>`
+[Light mode] run light mode with this usage: `$ python ./gitsint.py -l -e <email address>`
 
 ## 🌞 More
 
