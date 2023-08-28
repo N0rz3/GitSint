@@ -5,6 +5,7 @@ from lib.hunt_mail import Light, Basic
 from lib.friends import output
 from lib.user import trackx
 from lib.avatar import downloader
+from lib.secondary_account import search
 
 async def parser():
     parser = argparse.ArgumentParser()
@@ -49,6 +50,13 @@ async def parser():
         default=None,
         help='download profile picture (avatar) by username'
     )
+    parser.add_argument(
+        '-s', '--search',
+        nargs='?',
+        type=str,
+        default=None,
+        help='search potential secondary account(s) by username'
+    )
 
     args = parser.parse_args()
 
@@ -87,6 +95,12 @@ async def parser():
         u = args.avatar
         print(banner)
         await downloader(name=u)
+        exit()
+
+    elif args.search:
+        username = args.search
+        print(banner)
+        await search(user=username)
         exit()
 
     else:
