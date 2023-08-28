@@ -5,7 +5,7 @@ from lib.hunt_mail import Light, Basic
 from lib.friends import output
 from lib.user import trackx
 from lib.avatar import downloader
-from lib.secondary_account import search
+from lib.names_resembling import search
 
 async def parser():
     parser = argparse.ArgumentParser()
