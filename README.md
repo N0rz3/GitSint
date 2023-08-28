@@ -33,7 +33,7 @@
 - organizations
 - friends
 - contributions
-- possible secondary account(s)
+- similar names
 - emails related
 - names related
 - names used
@@ -52,7 +52,7 @@
 - Search for domains via Hunter.io
 - Light mode
 - Avatar upload
-- Search for potential secondary account
+- Search for similar names
 
 
 ## **📦 Installation**
