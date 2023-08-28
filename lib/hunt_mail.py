@@ -115,10 +115,15 @@ class Basic:
 #################################################################################
 
     def login():
-        name = input("\n[?] Please enter your username (recommended to use this option with a secondary account): ")
+        name = None
+        token = None
+
+        while not name: # display the input as long as the field is empty
+            name = input("\n[?] Please enter your username (recommended to use this option with a secondary account): ")
 
         print(italic(f"\n-> {BLACK}https://github.com/settings/tokens (check the options of repo, delete_repo, user:email){WHITE}"))
-        token = input("[?] Please enter your token: ")
+        while not token: # display the input as long as the field is empty
+            token = input("[?] Please enter your token: ")
 
         with open("creds.txt", "w") as file:
             file.write("Name:" + name + "\n" + "Token:" + token)
