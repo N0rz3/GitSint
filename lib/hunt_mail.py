@@ -44,7 +44,7 @@ class Basic:
         r = await Requests("https://api.github.com/user/repos", headers=headers, json=data).post()
 
         if r.status_code == 201:
-            TempPrint("[+] 🎭 Creation of repo...").Tprint()
+            TempPrint("[+] 🎭 Creation of repo...").Tprint() # creation private repo
             success = True
         
         return success, repo
@@ -66,7 +66,7 @@ class Basic:
                 "content": "R2l0U2ludA=="
             }
 
-            TempPrint("[+] 🎭 Spoofing...").Tprint()
+            TempPrint("[+] 🎭 Spoofing...").Tprint() # spoofing commit with the email provided in the data
             response = await Requests(f"https://api.github.com/repos/{user}/{repo}/contents/gitsint.txt", headers=headers, json=data).put()
             if response.status_code == 201:
                 success = True
@@ -84,7 +84,7 @@ class Basic:
                     'authorization': f'token {token}'
                 }
 
-                TempPrint("[+] 🎭 Pushing...").Tprint()
+                TempPrint("[+] 🎭 Pushing...").Tprint() # data push (email) of the falsifies commit
                 r = await Requests(f"https://api.github.com/repos/{user}/{repo}/commits", headers=headers).get()
 
                 name = r.json()[0]['author']
@@ -108,7 +108,7 @@ class Basic:
         r = await Requests(f"https://api.github.com/repos/{user}/{repo}", headers=headers).delete()
 
         if r.status_code == 204:
-            print(italic("[+] Repo deleted."))
+            print(italic("[+] Repo deleted.")) # delete private repo
         else:
             print("[-] Error while deleting the repo.")
 
