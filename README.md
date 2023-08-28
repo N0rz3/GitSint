@@ -86,7 +86,7 @@ options:
   -a [AVATAR], --avatar [AVATAR]
                         download profile picture (avatar) by username
   -s [SEARCH], --search [SEARCH]
-                        search potential secondary account(s) by username
+                        search for similar names by username
 
 ```
 [Light mode] run light mode with this usage: `$ python ./gitsint.py -l -e <email address>`
