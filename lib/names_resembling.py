@@ -2,7 +2,7 @@ from .Requests import Requests
 from bs4 import BeautifulSoup
 
 # patch note n°1 
-# API deletion for scraper the name (no more ratelimit)
+# API deletion for scraper the _name (no more ratelimit)
 
 async def search(user):
     api = "https://api.github.com/search/users?q={}".format(user)
