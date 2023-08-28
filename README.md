@@ -52,6 +52,7 @@
 - Search for domains via Hunter.io
 - Light mode
 - Avatar upload
+- Search for potential secondary account
 
 
 ## **📦 Installation**
