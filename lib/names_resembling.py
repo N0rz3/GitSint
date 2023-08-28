@@ -1,4 +1,8 @@
 from .Requests import Requests
+from bs4 import BeautifulSoup
+
+# patch note n°1 
+# API deletion for scraper the name
 
 async def search(user):
     api = "https://api.github.com/search/users?q={}".format(user)
@@ -18,15 +22,21 @@ async def search(user):
                         _login = item['login'] 
 
                         if _login != user:
-                            count += 1
-                            url = item['url']; _api = await Requests(url).get()
+                            count += 1     
 
-                            _name = _api.json()['name']
-                            if _name != None:
-                                print(f"[+]  🙉​ {_login} ({_name})")
+                            url = f"https://github.com/{_login}"
+
+                            _r = await Requests(url).get()
+
+                            soup = BeautifulSoup(_r.text, 'html.parser')
+                            name = soup.find("span", {"class": "p-name vcard-fullname d-block overflow-hidden"})
+                            _name = name.text.strip()
+
+                            if _name != '':
+                                print(f"[+] 🙉 {_login} ({_name})")
 
                             else:
-                                print(f"[+]  🙉​ {_login}")
+                                print(f"[+] 🙉 {_login}")
 
                     if count == 0:
                         print(f"[-] No result for {user}.")
@@ -56,11 +66,15 @@ async def search2(user):
                 _login = item['login']
 
                 if _login != user:
-                    url = item['url']
-                    _api = await Requests(url).get()
-                    _name = _api.json().get('name', '')
+                    url = f"https://github.com/{_login}"
 
-                    if _name:
+                    _r = await Requests(url).get()
+
+                    soup = BeautifulSoup(_r.text, 'html.parser')
+                    name = soup.find("span", {"class": "p-name vcard-fullname d-block overflow-hidden"})
+                    _name = name.text.strip()
+
+                    if _name != '':
                         count += 1
                         names.append(f"{_login} ({_name})")
                     else:
