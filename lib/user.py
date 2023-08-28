@@ -4,7 +4,7 @@ from .profile import *
 from .text import *
 from .gitlab import user_test_in_gitlab
 from .hunterio import Hunter
-from .secondary_account import search2
+from .names_resembling import search2
 
 async def trackx(user):
     profile = await user_infos.profile_scraping(user)
