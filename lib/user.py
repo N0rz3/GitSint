@@ -78,7 +78,7 @@ async def trackx(user):
     print(f"│")
     print(f"│  └──Name(s) History")
     if second['count'] > 0 and 'names' in second:
-        print(f"│     ├──Potentials secondary account(s)")
+        print(f"│     ├──Names resembling")
         print(f"│     │  └──Count: {second['count']}")
         for second_data in second['names']:
             print(f"│     │     ├──Name: {second_data}")
