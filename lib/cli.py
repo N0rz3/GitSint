@@ -55,7 +55,7 @@ async def parser():
         nargs='?',
         type=str,
         default=None,
-        help='search potential secondary account(s) by username'
+        help='search for similar names by usernamee'
     )
 
     args = parser.parse_args()
