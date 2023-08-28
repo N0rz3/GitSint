@@ -70,10 +70,6 @@ $ pip install -r requirements.txt
 usage: gitsint.py [-h] [-u [USERNAME]] [-o [ORGANIZATION]] [-e [EMAIL]] [-f [FRIENDS]] [-l] [-a [AVATAR]]
 
 options:
-usage: gitsint.py [-h] [-u [USERNAME]] [-o [ORGANIZATION]] [-e [EMAIL]] [-f [FRIENDS]] [-a [AVATAR]] [-s [SEARCH]] 
-                  [-l]
-
-options:
   -h, --help            show this help message and exit
   -u [USERNAME], --username [USERNAME]
                         searches all public information by username
