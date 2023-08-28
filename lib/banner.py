@@ -28,6 +28,7 @@ banner2 = f"""{RED}
 
 
 usage: gitsint.py [-h] [-u [USERNAME]] [-o [ORGANIZATION]] [-e [EMAIL]] [-f [FRIENDS]] [-l] [-a [AVATAR]]
+                  [-s [SEARCH]]
 
 options:
   -h, --help            show this help message and exit
@@ -39,9 +40,9 @@ options:
                         search for an account by email
   -f [FRIENDS], --friends [FRIENDS]
                         search for potential friends by username
+  -l, --light           light mode with option '-e'
   -a [AVATAR], --avatar [AVATAR]
                         download profile picture (avatar) by username
   -s [SEARCH], --search [SEARCH]
                         search potential secondary account(s) by username
-  -l, --light           light mode with option '-e'
 """
