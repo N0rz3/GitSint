@@ -28,7 +28,7 @@ banner2 = f"""{RED}
 
 
 usage: gitsint.py [-h] [-u [USERNAME]] [-o [ORGANIZATION]] [-e [EMAIL]] [-f [FRIENDS]] [-l] [-a [AVATAR]]
-                  [-s [SEARCH]]
+                  [-s [SIMILAR]]
 
 options:
   -h, --help            show this help message and exit
