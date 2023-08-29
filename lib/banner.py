@@ -43,6 +43,6 @@ options:
   -l, --light           light mode with option '-e'
   -a [AVATAR], --avatar [AVATAR]
                         download profile picture (avatar) by username
-  -s [SEARCH], --search [SEARCH]
+  -s [SIMILAR], --similar [SIMILAR]
                         search for similar names by username
 """
