@@ -48,6 +48,7 @@ async def search(user):
                 print("[-] JSON parsing error.")
                 exit()
 
+
 async def search2(user):
     api = "https://api.github.com/search/users?q={}".format(user)
 
@@ -64,33 +65,27 @@ async def search2(user):
                     "count": count,
                     "names": f"No result for {user}."
                 }
-            
+
             for item in items:
                 _login = item['login']
 
                 if _login != user:
-                    url = f"https://github.com/{_login}"
+                    url = item['url']
+                    _api = await Requests(url).get()
+                    _name = _api.json().get('name', '')
 
-                    _r = await Requests(url).get()
-
-                    soup = BeautifulSoup(_r.text, 'html.parser')
-                    name = soup.find("span", {"class": "p-name vcard-fullname d-block overflow-hidden"})
-                    if name != None:
-                        _name = name.text.strip()
-
-                        if _name != '':
-                            print(f"[+] 🙉 {_login} ({_name})")
-
-                        else:
-                            print(f"[+] 🙉 {_login}")
+                    if _name:
+                        count += 1
+                        names.append(f"{_login} ({_name})")
                     else:
-                        print(f"[+] 🙉 {_login}")
+                        count += 1
+                        names.append(f"{_login}")
 
             return {
                 "count": count,
                 "names": names
             }
-            
+
         except (KeyError, ValueError):
             return {
                 "count": False,
