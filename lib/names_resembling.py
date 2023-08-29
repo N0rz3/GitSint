@@ -70,16 +70,21 @@ async def search2(user):
                 _login = item['login']
 
                 if _login != user:
-                    url = item['url']
-                    _api = await Requests(url).get()
-                    _name = _api.json().get('name', '')
+                    url = f"https://github.com/{_login}"
 
-                    if _name:
-                        count += 1
-                        names.append(f"{_login} ({_name})")
-                    else:
-                        count += 1
-                        names.append(f"{_login}")
+                    _r = await Requests(url).get()
+
+                    soup = BeautifulSoup(_r.text, 'html.parser')
+                    name = soup.find("span", {"class": "p-name vcard-fullname d-block overflow-hidden"})
+                    if name != None:
+                        _name = name.text.strip()
+
+                        if _name:
+                            count += 1
+                            names.append(f"{_login} ({_name})")
+                        else:
+                            count += 1
+                            names.append(f"{_login}")
 
             return {
                 "count": count,
