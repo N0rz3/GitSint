@@ -51,7 +51,7 @@ async def parser():
         help='download profile picture (avatar) by username'
     )
     parser.add_argument(
-        '-s', '--search',
+        '-s', '--similar',
         nargs='?',
         type=str,
         default=None,
@@ -97,8 +97,8 @@ async def parser():
         await downloader(name=u)
         exit()
 
-    elif args.search:
-        username = args.search
+    elif args.similar:
+        username = args.similar
         print(banner)
         await search(user=username)
         exit()
