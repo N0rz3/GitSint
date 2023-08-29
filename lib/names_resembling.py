@@ -1,8 +1,8 @@
 from .Requests import Requests
 from bs4 import BeautifulSoup
 
-# patch note n°1 
-# API deletion for scraper the _name (no more ratelimit)
+# patch note n°2
+# fix {AttributeError: 'NoneType' object has no attribute 'text'}
 
 async def search(user):
     api = "https://api.github.com/search/users?q={}".format(user)
@@ -30,11 +30,14 @@ async def search(user):
 
                             soup = BeautifulSoup(_r.text, 'html.parser')
                             name = soup.find("span", {"class": "p-name vcard-fullname d-block overflow-hidden"})
-                            _name = name.text.strip()
+                            if name != None:
+                                _name = name.text.strip()
 
-                            if _name != '':
-                                print(f"[+] 🙉 {_login} ({_name})")
+                                if _name != '':
+                                    print(f"[+] 🙉 {_login} ({_name})")
 
+                                else:
+                                    print(f"[+] 🙉 {_login}")
                             else:
                                 print(f"[+] 🙉 {_login}")
 
@@ -72,14 +75,16 @@ async def search2(user):
 
                     soup = BeautifulSoup(_r.text, 'html.parser')
                     name = soup.find("span", {"class": "p-name vcard-fullname d-block overflow-hidden"})
-                    _name = name.text.strip()
+                    if name != None:
+                        _name = name.text.strip()
 
-                    if _name != '':
-                        count += 1
-                        names.append(f"{_login} ({_name})")
+                        if _name != '':
+                            print(f"[+] 🙉 {_login} ({_name})")
+
+                        else:
+                            print(f"[+] 🙉 {_login}")
                     else:
-                        count += 1
-                        names.append(f"{_login}")
+                        print(f"[+] 🙉 {_login}")
 
             return {
                 "count": count,
