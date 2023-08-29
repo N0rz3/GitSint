@@ -86,6 +86,10 @@ async def search2(user):
                             count += 1
                             names.append(f"{_login}")
 
+                    else:
+                        count += 1
+                        names.append(f"{_login}")
+
             return {
                 "count": count,
                 "names": names
