@@ -97,7 +97,7 @@ options:
 
 If you don't want to display your email address in the commits and leave it private, you just have to go to 
 
-**settings > emails**  
+**settings -> emails**  
 and tick these two parameters
 
 ![](assets/protection.png)
