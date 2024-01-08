@@ -26,7 +26,6 @@ class Hunt_lightmod:
                 print("[-] JSON parsing error.")
                 exit()
 
-
 class Hunt:
     def __init__(self, target: str) -> None:
         self.token = None
@@ -118,13 +117,37 @@ class Hunt:
         else:
             print("[-] Error while deleting the repo.")
 
-    def login(self):
-        while not self.name:  # display the input as long as the field is empty
+    async def login(self):
+        while not self.name:
             self.name = input("\n[?] 🐱 Please enter your username (recommended to use this option with a secondary account): ")
 
-        print(f"\n{BLACK}-> https://github.com/settings/tokens (check the options of repo, delete_repo, user:email){WHITE}")
-        while not self.token:  # display the input as long as the field is empty
+        print(f"\n{BLACK}-> https://github.com/settings/tokens (vérifiez les options repo, delete_repo, user:email){WHITE}")
+        while not self.token:
             self.token = input("[?] 🔑 Please enter your token: ")
+
+        api_test_valid = "https://api.github.com/octocat"  
+
+        headers = {
+            'Authorization': f'Bearer {self.token}',
+            'X-GitHub-Api-Version': '2022-11-28'
+        }
+
+        r = await Requests(api_test_valid, headers=headers).get()
+        status = r.status_code
+
+        status_dict = {
+            200: '[+] Token valid.',
+            401: '[-] Token not valid please try creating one again.',
+            403: '[-] Rate limit try again later...'
+        }
+
+        for key, value in status_dict.items():
+            if key == status:
+                if key != 200:
+                    exit("\n" + value)
+                else:
+                    print("\n" + value)
+                    break
 
         with open("creds.txt", "w") as file:
             file.write(f"Name:{self.name}\nToken:{self.token}")
@@ -152,10 +175,10 @@ class Hunt:
                 print("[-] Credentials not found.")
                 print("You have to log in / re-log in")
 
-                self.login()
+                await self.login()
 
         except FileNotFoundError:
             print("[-] Credentials not found.")
             print("You have to log in / re-log in")
 
-            self.login()
+            await self.login()
