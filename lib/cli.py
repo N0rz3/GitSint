@@ -1,7 +1,7 @@
 import argparse
 from .banner import *
 from lib.organizations import print_organization_info
-from lib.hunt_mail import Light, Basic
+from lib.hunt_mail import Hunt, Hunt_lightmod
 from lib.friends import output
 from lib.user import trackx
 from lib.avatar import downloader
@@ -76,13 +76,14 @@ async def parser():
         if args.email:
             email = args.email
             print(banner)
-            await Light.hunt(email)
+            await Hunt_lightmod.hunt(email)
             exit()
 
     elif args.email:
             print(banner)
             email = args.email
-            await Basic.launch(email=email)
+            instance = Hunt(target=email)
+            await instance.launch()
             exit()
 
     elif args.friends:
