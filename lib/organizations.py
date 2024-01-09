@@ -5,37 +5,40 @@ async def organizations_scraping(org):
     api = "https://api.github.com/orgs/{}".format(org)
 
     r = await Requests(api).get()
-
-    data = {
-        'name': r.json()['name'],
-        'location': r.json()['location'],
-        'url': r.json()['blog'],
-        'email': r.json()['email'],
-        'verified': r.json()['is_verified'],
-        'followers': r.json()['followers'],
-        'following': r.json()['following'],
-        'creation': r.json()['created_at'].replace("-", "/").replace("T", " ").replace("Z", ""),
-        'update': r.json()['updated_at'].replace("-", "/").replace("T", " ").replace("Z", "")
-    }
-
-    members_api = "https://api.github.com/orgs/{}/public_members".format(org)
-
-    req = await Requests(members_api).get()
-
-    members = req.json()
-
-    member_list = []
-
-    for member in members:
-        member_data = {
-            'login': member['login']
+    
+    try:
+        data = {
+            'name': r.json()['name'],
+            'location': r.json()['location'],
+            'url': r.json()['blog'],
+            'email': r.json()['email'],
+            'verified': r.json()['is_verified'],
+            'followers': r.json()['followers'],
+            'following': r.json()['following'],
+            'creation': r.json()['created_at'].replace("-", "/").replace("T", " ").replace("Z", ""),
+            'update': r.json()['updated_at'].replace("-", "/").replace("T", " ").replace("Z", "")
         }
-        member_list.append(member_data)
 
-    data['members'] = member_list
+        members_api = "https://api.github.com/orgs/{}/public_members".format(org)
 
-    return data
+        req = await Requests(members_api).get()
 
+        members = req.json()
+
+        member_list = []
+
+        for member in members:
+            member_data = {
+                'login': member['login']
+            }
+            member_list.append(member_data)
+
+        data['members'] = member_list
+
+        return data
+    
+    except KeyError:
+        exit("[-] Organization provided does not exist.")
 
 async def print_organization_info(org):
     org_data = await organizations_scraping(org=org)
