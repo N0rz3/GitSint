@@ -37,7 +37,7 @@ class Hunter:
 
                 if count > 0:
                     return {
-                        'message': f'Company: {company} - (Hunter.io) {company} => {domain}'
+                        'message': f'Company: {company} - (🦊 Hunter.io) {company} => {domain}'
                     }
                 
                 else:
