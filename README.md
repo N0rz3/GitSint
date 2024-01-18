@@ -70,7 +70,7 @@ $ pip install -r requirements.txt
 
 ```
 usage: gitsint.py [-h] [-u [USERNAME]] [-o [ORGANIZATION]] [-e [EMAIL]] [-f [FRIENDS]] [-l] [-a [AVATAR]]
-                  [-s [SIMILAR]]
+                  [-s [SIMILAR]] [-v]
 
 options:
   -h, --help            show this help message and exit
@@ -86,8 +86,8 @@ options:
   -a [AVATAR], --avatar [AVATAR]
                         download profile picture (avatar) by username
   -s [SIMILAR], --similar [SIMILAR]
-                        search for similar names by username
-
+                        search for similar names by usernamee
+  -v, --version         check your version & update(s)
 ```
 [Light mode] run light mode with this usage: `$ python ./gitsint.py -l -e <email address>`
 
