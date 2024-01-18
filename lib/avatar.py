@@ -2,24 +2,35 @@ from .text import *
 from .Requests import Requests
 import os
 
-async def scraper(name):
-    api = f"https://api.github.com/users/{name}"
+class Avatar_Scraper:
+    def __init__(self, name: str) -> None:
+        self.name = name
 
-    req = await Requests(api).get()
-   
-    avatar = req.json()['avatar_url'] 
-    return name, avatar 
+    async def scraper(self):
+        api = f"https://api.github.com/users/{self.name}"
 
-
-async def downloader(name):
-    name, avatar_url = await scraper(name)
-    name_file = f"avatar_{name}.jpg"
+        req = await Requests(url=api).get()
     
-    avatar_text = await Requests(avatar_url).get()
-    avatar_text = avatar_text.content
+        self.avatar = req.json()['avatar_url'] 
 
-    with open(name_file, "wb") as file:
-        file.write(avatar_text)
-        PATH = os.path.abspath(name_file)
+    async def downloader(self):
+        await self.scraper()
 
-        print(f"[+] Profile picture saved at: {italic(BLACK + PATH)}")
+        directory = "avatars"
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+
+        PATH = os.path.join(directory, f"{self.name}.jpg")
+
+        avatar_response = await Requests(url=self.avatar).get()
+
+        if avatar_response.status_code == 200:
+            avatar_content = avatar_response.content
+
+            with open(PATH, "wb") as file:
+                file.write(avatar_content)
+                PATH = os.path.abspath(PATH)
+
+                print(f"[+] Profile picture saved at: {italic(BLACK + PATH)}")
+        else:
+            print(f"[-] Failed to download profile picture. Status Code: {avatar_response.status_code}")
