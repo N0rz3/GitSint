@@ -1,5 +1,4 @@
 import argparse
-from .banner import *
 from lib.organizations import print_organization_info
 from lib.hunt_mail import Hunt, Hunt_lightmod
 from lib.friends import output
