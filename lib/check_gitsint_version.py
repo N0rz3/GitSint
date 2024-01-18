@@ -1,4 +1,4 @@
-from utils.text import *
+from .utils.text import *
 from .Requests import Requests
 import json
 
