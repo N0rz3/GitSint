@@ -31,6 +31,6 @@ class Avatar_Scraper:
                 file.write(avatar_content)
                 PATH = os.path.abspath(PATH)
 
-                print(f"[+] Profile picture saved at: {italic(BLACK + PATH)}")
+                print(f"[+] ✍️ Profile picture saved at: {italic(BLACK + PATH)}")
         else:
             print(f"[-] Failed to download profile picture. Status Code: {avatar_response.status_code}")
