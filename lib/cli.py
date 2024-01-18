@@ -6,6 +6,7 @@ from lib.friends import output
 from lib.user import trackx
 from lib.avatar import downloader
 from lib.names_resembling import search
+from .check_gitsint_version import Version
 
 async def parser():
     parser = argparse.ArgumentParser()
@@ -57,30 +58,31 @@ async def parser():
         default=None,
         help='search for similar names by usernamee'
     )
+    parser.add_argument(
+        '-v', '--version',
+        action='store_true',
+        help="check your version & update(s)"
+    )
 
     args = parser.parse_args()
 
     if args.username:
         user = args.username
-        print(banner)
         await trackx(user)
         exit()
 
     elif args.organization:
         org = args.organization
-        print(banner)
         await print_organization_info(org)
         exit()
 
     elif args.light:
         if args.email:
             email = args.email
-            print(banner)
             await Hunt_lightmod.hunt(email)
             exit()
 
     elif args.email:
-            print(banner)
             email = args.email
             instance = Hunt(target=email)
             await instance.launch()
@@ -88,22 +90,21 @@ async def parser():
 
     elif args.friends:
         username = args.friends
-        print(banner)
         await output(user=username)
         exit()
 
     elif args.avatar:
         u = args.avatar
-        print(banner)
         await downloader(name=u)
         exit()
 
     elif args.similar:
         username = args.similar
-        print(banner)
         await search(user=username)
         exit()
 
+    elif args.version:
+        await Version.check_update()
+
     else:
-        print(banner2)
-        exit()
+        exit(1)
