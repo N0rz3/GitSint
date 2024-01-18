@@ -1,5 +1,5 @@
 from .Requests import Requests
-from utils.text import *
+from .utils.text import *
 
 async def organizations_scraping(org):
     api = "https://api.github.com/orgs/{}".format(org)
