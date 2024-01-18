@@ -1,6 +1,6 @@
 from .Requests import Requests
-from utils.text import *
-from utils.Print import *
+from .utils.text import *
+from .utils.Print import *
 from bs4 import BeautifulSoup
 
 async def extract_usernames(url):
