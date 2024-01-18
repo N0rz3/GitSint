@@ -1,6 +1,6 @@
 from .Requests import Requests
-from .objects import TempPrint
-from .text import *
+from utils.Print import *
+from utils.text import *
 import uuid
 import os
 
