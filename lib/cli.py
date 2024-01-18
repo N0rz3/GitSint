@@ -4,7 +4,7 @@ from lib.organizations import print_organization_info
 from lib.hunt_mail import Hunt, Hunt_lightmod
 from lib.friends import output
 from lib.user import trackx
-from lib.avatar import downloader
+from lib.avatar import Avatar_Scraper
 from lib.names_resembling import search
 from .check_gitsint_version import Version
 
@@ -95,7 +95,7 @@ async def parser():
 
     elif args.avatar:
         u = args.avatar
-        await downloader(name=u)
+        await Avatar_Scraper(name=u).downloader()
         exit()
 
     elif args.similar:
