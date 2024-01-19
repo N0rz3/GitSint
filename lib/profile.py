@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 from .Requests import Requests
+from .utils.utils import *
         
 class user_infos:
     types = ['fork', 'source', 'archived', 'mirror', 'template']
@@ -106,10 +107,6 @@ class user_infos:
             return data
         
     async def contributions(user):
-        def no_letters(text):
-            digits = "".join(filter(str.isdigit, text))
-            return digits
-        
         url = "https://github.com/{}".format(user)
 
         r = await Requests(url).get()
@@ -119,7 +116,5 @@ class user_infos:
         contribut = soup.find('h2', {'class': 'f4 text-normal mb-2'})
         contribut = contribut.text.strip()
 
-        numbers = no_letters(contribut)
-
-
+        numbers = Text_Manager(text=contribut).no_letters()
         return numbers
