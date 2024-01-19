@@ -1,6 +1,8 @@
-from .utils.text import *
+from .utils.utils import Text_Manager
 from .Requests import Requests
 import os
+
+BLACK = Text_Manager.BLACK
 
 class Avatar_Scraper:
     def __init__(self, name: str) -> None:
@@ -31,6 +33,6 @@ class Avatar_Scraper:
                 file.write(avatar_content)
                 PATH = os.path.abspath(PATH)
 
-                print(f"[+] ✍️ Profile picture saved at: {italic(BLACK + PATH)}")
+                print(f"[+] ✍️ Profile picture saved at: {Text_Manager(BLACK + PATH).italic()}")
         else:
             print(f"[-] Failed to download profile picture. Status Code: {avatar_response.status_code}")
