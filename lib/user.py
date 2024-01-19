@@ -1,12 +1,16 @@
 from .commits import *
 from .friends import *
 from .profile import *
-from .utils.text import *
+from .utils.utils import Text_Manager
 from .gitlab import user_test_in_gitlab
 from .hunterio import Hunter
 from .names_resembling import search2
+from .utils.utils import Keys
 
 async def trackx(user):
+    RED = Text_Manager.RED
+    WHITE = Text_Manager.WHITE
+
     profile = await user_infos.profile_scraping(user)
     profile = profile['profile']
     repos = await user_infos.scrap_repos(user)
@@ -19,6 +23,7 @@ async def trackx(user):
     email_target = await Email.resolv_email(user)
     company = await Hunter.find_domain(user)
     second = await search2(user)
+    ssh_keys = await Keys(user).key_recoverer()
 
     print(f"{RED}{user}{WHITE}")
     print(f"├──Profile")
@@ -41,6 +46,9 @@ async def trackx(user):
     print(f"│")
     print(f"├──Gists")
     print(f"│  └──Gists: {profile['gists']}")
+    print(f"|")
+    print(f"├──Keys")
+    print(f"│  └──SSH Keys: {ssh_keys}")
     print(f"│")
     print(f"├──Date")
     print(f"│  ├──Creation date: {profile['creation_date'].replace('-', '/').replace('T', ' ').replace('Z', '')} 🌐 (UTC)")
