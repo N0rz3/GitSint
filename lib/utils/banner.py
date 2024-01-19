@@ -1,5 +1,9 @@
-from .text import *
+from .utils import Text_Manager
 import json
+
+RED = Text_Manager.RED
+PURPLE = Text_Manager.PURPLE
+WHITE = Text_Manager.WHITE
 
 with open('config.json') as file:
     version = json.load(file)['version']
@@ -10,7 +14,7 @@ banner = f"""{RED}
 -(((---(((----------------------  
  / _] |_   _/' _/| |  \| |_   _| 
 | [/\ | | | `._`.| | | ' | | |   
- \__/_| |_| |___/|_|_|\__| |_|   {PURPLE}{italic(f"GitSint v{version} 🐙")}{RED}
+ \__/_| |_| |___/|_|_|\__| |_|   {PURPLE}{Text_Manager(text=f"GitSint v{version} 🐙").italic()}{RED}
      
           {WHITE}BY Norze
   GitHub {RED}OSINT{WHITE} tool made with 💖
