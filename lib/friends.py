@@ -1,7 +1,9 @@
 from .Requests import Requests
-from .utils.text import *
-from .utils.Print import *
+from .utils.utils import Text_Manager
 from bs4 import BeautifulSoup
+
+RED = Text_Manager.RED
+WHITE = Text_Manager.WHITE
 
 async def extract_usernames(url):
     usernames = []
@@ -40,7 +42,7 @@ async def extract_all_usernames(url):
     return usernames
 
 async def output(user):
-    TempPrint("[+] Analyzing followers and followings...").Tprint()
+    Text_Manager(text="[+] Analyzing followers and followings...").Tprint()
     friends = await track(user)
 
     print(f"{RED}{user}{WHITE}")
