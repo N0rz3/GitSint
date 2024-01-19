@@ -1,4 +1,4 @@
-from .utils.text import *
+from .utils.utils import Text_Manager
 from .Requests import Requests
 import json
 
@@ -26,4 +26,4 @@ class Version:
             print(f"[~] You are advised to reinstall the tool\n=> https://github.com/N0rz3/GitSint")
 
         else:
-            print(italic(f"\n[+] Your version is up to date"))
+            print(Text_Manager(text=f"\n[+] Your version is up to date").Tprint())
