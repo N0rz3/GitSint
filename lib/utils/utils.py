@@ -29,7 +29,7 @@ class Text_Manager:
 class Keys:
     def __init__(self, target: str) -> None:
         self.targ = target
-        self.keys_lister: list[str]
+        # self.keys_lister: list[str]
 
     async def key_recoverer(self):
         r = await Requests(url=f"https://github.com/{self.targ}.keys").get()
