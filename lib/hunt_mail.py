@@ -1,15 +1,17 @@
 from .Requests import Requests
-from .utils.Print import *
-from .utils.text import *
+from .utils.utils import Text_Manager as TM
 import uuid
 import os
+
+BLACK = TM.BLACK
+WHITE = TM.WHITE
 
 class Hunt_lightmod:
     async def hunt(email):
         api = "https://api.github.com/search/users?q={}".format(email)
 
         r = await Requests(api).get()
-        TempPrint("[~] 🔎 GitHub account tracking...").Tprint()
+        TM("[~] 🔎 GitHub account tracking...").Tprint()
 
         if r.status_code == 200:
             try:
@@ -49,7 +51,7 @@ class Hunt:
         r = await Requests("https://api.github.com/user/repos", headers=headers, json=data).post()
 
         if r.status_code == 201:
-            TempPrint("[+] 🎭 Creation of repo...").Tprint()  # creation private repo
+            TM("[+] 🎭 Creation of repo...").Tprint()  # creation private repo
             success = True
 
         return success, repo
@@ -71,7 +73,7 @@ class Hunt:
                 "content": "R2l0U2ludA=="
             }
 
-            TempPrint("[+] 🎭 Spoofing...").Tprint()  # spoofing commit with the email provided in the data
+            TM("[+] 🎭 Spoofing...").Tprint()  # spoofing commit with the email provided in the data
             response = await Requests(f"https://api.github.com/repos/{self.user}/{repo}/contents/gitsint.txt", headers=headers, json=data).put()
             if response.status_code == 201:
                 success = True
@@ -89,7 +91,7 @@ class Hunt:
                 'authorization': f'token {self.token}'
             }
 
-            TempPrint("[+] 🎭 Pushing...").Tprint()  # data push (email) of the falsified commit
+            TM("[+] 🎭 Pushing...").Tprint()  # data push (email) of the falsified commit
             r = await Requests(f"https://api.github.com/repos/{self.user}/{repo}/commits", headers=headers).get()
 
             name = r.json()[0]['author']
@@ -113,7 +115,7 @@ class Hunt:
         r = await Requests(f"https://api.github.com/repos/{self.user}/{repo}", headers=headers).delete()
 
         if r.status_code == 204:
-            print(italic(f"[+] Repo deleted."))  # delete private repo
+            print(TM(f"[+] Repo deleted.").italic())  # delete private repo
         else:
             print("[-] Error while deleting the repo.")
             
@@ -160,7 +162,7 @@ class Hunt:
 
             print("\n[+] ✍️ Credentials saved!")
 
-            print(italic(f"[+] Credentials path => {path}"))
+            print(TM(f"[+] Credentials path => {path}").italic())
 
     async def launch(self):
         try:
