@@ -1,5 +1,8 @@
 from .Requests import Requests
-from .utils.text import *
+from .utils.utils import Text_Manager
+
+RED = Text_Manager.RED
+WHITE = Text_Manager.WHITE
 
 async def organizations_scraping(org):
     api = "https://api.github.com/orgs/{}".format(org)
