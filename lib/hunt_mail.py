@@ -1,5 +1,6 @@
 from .Requests import Requests
 from .utils.utils import Text_Manager as TM
+from .utils.utils import Credentials
 import uuid
 import os
 
@@ -132,29 +133,7 @@ class Hunt:
         while not self.token:
             self.token = input("[?] 🔑 Please enter your token: ")
 
-        api_test_valid = "https://api.github.com/octocat"  
-
-        headers = {
-            'Authorization': f'Bearer {self.token}',
-            'X-GitHub-Api-Version': '2022-11-28'
-        }
-
-        r = await Requests(api_test_valid, headers=headers).get()
-        status = r.status_code
-
-        status_dict = {
-            200: '[+] Token valid.',
-            401: '[-] Token not valid please try creating one again.',
-            403: '[-] Rate limit try again later...'
-        }
-
-        for key, value in status_dict.items():
-            if key == status:
-                if key != 200:
-                    exit("\n" + value)
-                else:
-                    print("\n" + value)
-                    break
+        await Credentials(username=self.name, token=self.token).check_scopes()
 
         with open("creds.txt", "w") as file:
             file.write(f"Name:{self.name}\nToken:{self.token}")
