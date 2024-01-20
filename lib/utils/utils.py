@@ -42,3 +42,58 @@ class Keys:
 
         else:
             pass
+
+class Credentials:
+    def __init__(self, username:str, token:str) -> None:
+        self.u = username
+        self.t = token
+
+    async def check_token(self):
+        api_test_valid = "https://api.github.com/octocat"  
+
+        headers = {
+            'Authorization': f'Bearer {self.t}',
+            'X-GitHub-Api-Version': '2022-11-28'
+        }
+
+        r = await Requests(api_test_valid, headers=headers).get()
+        status = r.status_code
+
+        status_dict = {
+            200: '[+] Token valid.',
+            401: '[-] Token not valid please try creating one again.',
+            403: '[-] Rate limit try again later...'
+        }
+
+        for key, value in status_dict.items():
+            if key == status:
+                if key != 200:
+                    exit("\n" + value)
+                else:
+                    print("\n" + value)
+                    break
+
+    async def check_scopes(self):
+        await self.check_token()
+
+        api = "https://api.github.com"
+
+        headers = {"Authorization": f"token {self.t}"}
+
+        r = await Requests(url=api, headers=headers).get()
+            
+        oauth_scopes = r.headers.get("x-oauth-scopes", "")
+        oauth_scopes = str(oauth_scopes).split(",")
+        oauth_scopes = [scope.strip() for scope in oauth_scopes]
+
+        scopes_list = [
+            'repo',
+            'delete_repo',
+            'user:email'
+        ]
+
+        if all(scope in oauth_scopes for scope in scopes_list):
+            print("[+] 🎯 The scopes (repo, delete_repo, user:email) are present in the token.")
+
+        else:
+            exit("[-] 🎯 The scopes (repo, delete_repo, user:email) are not present in the token.")
