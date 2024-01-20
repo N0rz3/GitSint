@@ -26,4 +26,4 @@ class Version:
             print(f"[~] You are advised to reinstall the tool\n=> https://github.com/N0rz3/GitSint")
 
         else:
-            print(f"\n[+] Your version is up to date"))
+            print(f"\n[+] Your version is up to date")
