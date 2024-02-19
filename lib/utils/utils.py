@@ -81,7 +81,7 @@ class Credentials:
         headers = {"Authorization": f"token {self.t}"}
 
         r = await Requests(url=api, headers=headers).get()
-            
+ 
         oauth_scopes = r.headers.get("x-oauth-scopes", "")
         oauth_scopes = str(oauth_scopes).split(",")
         oauth_scopes = [scope.strip() for scope in oauth_scopes]
@@ -92,6 +92,7 @@ class Credentials:
             'user:email'
         ]
 
+        print("\n[+] 🎯 The scopes presents => " + ', '.join(oauth_scopes))
         if all(scope in oauth_scopes for scope in scopes_list):
             print("[+] 🎯 The scopes (repo, delete_repo, user:email) are present in the token.")
 
