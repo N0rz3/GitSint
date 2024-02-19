@@ -129,7 +129,7 @@ class Hunt:
         while not self.name:
             self.name = input("\n[?] 🐱 Please enter your username (recommended to use this option with a secondary account): ")
 
-        print(f"\n{BLACK}-> https://github.com/settings/tokens (check option repo, delete_repo, user:email){WHITE}")
+        print(f"\n{BLACK}-> https://github.com/settings/tokens (check scopes of : repo, delete_repo, user:email){WHITE}")
         while not self.token:
             self.token = input("[?] 🔑 Please enter your token: ")
 
