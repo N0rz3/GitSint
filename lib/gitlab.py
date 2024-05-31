@@ -8,7 +8,7 @@ async def user_test_in_gitlab(user):
 
     if r.status_code == 200:
         soup = BeautifulSoup(r.text, "html.parser")
-        name = soup.find("h1", class_="gl-heading-1 gl-line-height-1 gl-mr-2 gl-my-0!")
+        name = soup.find("h1", class_="gl-heading-1 gl-leading-1 gl-mr-2 gl-my-0!")
 
         return {
             'name': name.text.strip()
