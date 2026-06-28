@@ -25,13 +25,11 @@
 - following
 - repos
 - gists
-- dates
+- date of creation/update
 - X (Twitter)
 - blog
-- company
 - organizations
-- friends
-- contributions
+- potentials friends
 - similar names
 - emails related
 - names related
