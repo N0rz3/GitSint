@@ -1,36 +1,71 @@
+from rich.progress import *
 from .commits import *
 from .friends import *
 from .profile import *
-from .utils.utils import Text_Manager
-from .gitlab import user_test_in_gitlab
-from .hunterio import Hunter
+from .utils.utils import Text_Manager as TM
 from .names_resembling import search2
 from .utils.utils import Keys
 
 async def trackx(user):
-    RED = Text_Manager.RED
-    WHITE = Text_Manager.WHITE
 
-    profile = await user_infos.profile_scraping(user)
-    profile = profile['profile']
-    repos = await user_infos.scrap_repos(user)
-    orgs = await user_infos.org(user)
-    friends = await track(user)
-    email_search = await Email.search(user)
-    username_history = await Name.history(user)
-    # num_contributors = await user_infos.contributions(user)
-    gitlab = await user_test_in_gitlab(user)
-    email_target = await Email.resolv_email(user)
-    company = await Hunter.find_domain(user)
-    second = await search2(user)
-    ssh_keys = await Keys(user).key_recoverer()
+    RED = TM.RED
+    WHITE = TM.WHITE
+
+    modules = [
+        ("profile", "Profile scraping", user_infos.profile_scraping),
+        ("repos", "Repositories scraping", user_infos.scrap_repos),
+        ("orgs", "Organizations scraping", user_infos.org),
+        ("friends", "Friends scraping", track),
+        ("emails", "Commits analyzing", Email.search),
+        ("history", "Username history analyzing", Name.history),
+        ("similar", "Similar names searching", search2),
+        ("keys", "SSH Keys scraping", lambda u: Keys(u).key_recoverer()),
+    ]
+
+    results = {}
+
+    with Progress(
+        SpinnerColumn(),
+        TextColumn("[cyan]{task.fields[module]}"),
+        BarColumn(),
+        TextColumn("{task.completed}/{task.total}"),
+        TimeElapsedColumn(),
+        transient=True,  
+    ) as progress:
+
+        task = progress.add_task(
+            "🐈‍⬛ GitSint",
+            total=len(modules),
+            module="Starting..."
+        )
+
+        for key, label, func in modules:
+
+            progress.update(task, module=f"🐙 {label}...")
+
+            results[key] = await func(user)
+
+            progress.advance(task)
+
+    profile = results["profile"]["profile"]
+    repos = results["repos"]
+    orgs = results["orgs"]
+    friends = results["friends"]
+    email_search = results["emails"]
+    username_history = results["history"]
+    second = results["similar"]
+    ssh_keys = results["keys"]
 
     print(f"{RED}{user}{WHITE}")
     print(f"├──Profile")
     print(f"│  ├──Name: {profile['name']}")
     print(f"│  ├──Id: {profile['id']}")
-    print(f"│  ├──Bio: {profile['biography']}")
-    print(f"│  ├──Location: {profile['location']}")
+    if profile['biography']:
+        print(f"│  ├──Bio: {profile['biography']}")
+    else:pass
+    if profile['location']:
+        print(f"│  ├──Location: {profile['location']}")
+    else: pass
     print(f"│  ├──Avatar: {profile['avatar']}")
     print(f"│  ├──Followers: {profile['followers']}")
     print(f"│  └──Following: {profile['following']}")
@@ -54,36 +89,39 @@ async def trackx(user):
     print(f"│  ├──Creation date: {profile['creation_date'].replace('-', '/').replace('T', ' ').replace('Z', '')} 🌐 (UTC)")
     print(f"│  └──Update date: {profile['update_date'].replace('-', '/').replace('T', ' ').replace('Z', '')} 🌐 (UTC)")
     print(f"│")
-    print(f"├──Social")
-    print(f"│  ├──X (Twitter): {profile['x']}")
-    print(f"│  └──GitLab")
-    print(f"│     └──Name: {gitlab['name']}")
+    if profile['x']:
+        print(f"├──Social")
+        print(f"│  └──X (Twitter): @{profile['x']}")
+    else:pass
     print(f"│")
-    print(f"├──URL")
-    print(f"│  ├──Blog: {profile['blog']}")
-    print(f"│  └──{company['message']}")
+    if profile['blog'] != '':
+        print(f"├──URL")
+        print(f"│  └──Blog: {profile['blog']}")
+    else:pass
     print(f"│")
-    print(f"├──Organization(s)")
-    for org in orgs.get('organization', []):
-        print(f"│  ├──Name: {org['name']}")
+    if orgs.get('organization'):
+        print("├──Organization(s)")
+        for org in orgs.get('organization', []):
+            print(f"│  ├──Name: {org['name']}")
+        print("│")
     print(f"│")
     print(f"├──Friend(s)")
     for friend in friends['friends']:
         if friend['name'] != "":   
             print(f"│  ├──{friend['name']}")
     print(f"│")
-    # print(f"├──Contributions")
-    # print(f"│  └──{num_contributors} contributions in the last year")
-    print(f"│")
     print(f"├──Commits")
-    print(f"│  └──Emails")
+    print(f"│  ├──Emails")
     if 'count' in email_search:
-        print(f"│     └──Count: {email_search['count']}")
+        print(f"│  │  └──Count: {email_search['count']}")
         if email_search['count'] > 0 and 'emails' in email_search:
             for email_data in email_search['emails']:
-                print(f"│        ├──Name: {email_data['name']}")
-                print(f"│        │  └──Email: {email_data['email']}")
-    print(f"│")
+                print(f"│  │    ├──Name: {email_data['name']}")
+                if email_data['name'].lower() in {user.lower(), profile["name"].lower(), profile['x']}:
+                    print(f"│  │    │  └──Email: {email_data['email']} {TM.PURPLE}(🙀 TARGET'S EMAIL){TM.WHITE}")
+                else:
+                    print(f"│  │    │  └──Email: {email_data['email']}")
+    print(f"│  │")
     print(f"│  └──Name(s) History")
     if second['count'] > 0 and 'names' in second:
         print(f"│     ├──Names resembling")
@@ -91,7 +129,7 @@ async def trackx(user):
         for second_data in second['names']:
             print(f"│     │     ├──Name: {second_data}")
     
-    print(f"│     ├──Names used: {gitlab['name']}, {profile['name']}, {profile['x']}, {email_target['email'].split('@')[0]}")
+    print(f"│     │")
     if 'message' in username_history:
         print(f"│     └──{username_history['message']}")
         if 'has not had several names' in username_history['message']:
