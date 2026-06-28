@@ -5,7 +5,7 @@
 [![license](https://img.shields.io/badge/License-GNU-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.fr.html)
 
 # **😇 About GitSint**
-> 🕵️ GitSint v2.0 is an osint tool based on open source information retrieval through a GitHub username/organization/email.
+> 🕵️ GitSint v2.0 is an osint tool based on open source information retrieval through a username/organization/email.
 > The tool mostly works with GitHub APIs.
 
 **Features of script**
@@ -27,9 +27,8 @@
 - gists
 - dates
 - X (Twitter)
-- GitLab
 - blog
-- company (+ domain)
+- company
 - organizations
 - friends
 - contributions
@@ -46,11 +45,11 @@
 
 - Fully asynchrone system
 - Completely redone design
-- Adding email to username
-- GitLab name
+- Find all email adress in commits 
+- Find all usernames in commits
+- Added email-based account tracking.
 - Information searches from an organization
-- Search for domains via Hunter.io
-- Light mode
+- Light mode => account tracking by email (works with GitHub API)
 - Avatar upload
 - Search for similar names
 
@@ -58,7 +57,7 @@
 ## **📦 Installation**
 
 - [Python 3](https://www.python.org/downloads/)
-- [Git](https://git-scm.com/downloads)
+- [Git](https://git-scm.com/downloads) ⚠️ **Necessary for the proper functioning of GitSint**
 
 ```
 $ git clone https://github.com/N0rz3/GitSint.git
@@ -70,26 +69,29 @@ $ pip install -r requirements.txt
 
 ```
 usage: gitsint.py [-h] [-u [USERNAME]] [-o [ORGANIZATION]] [-e [EMAIL]] [-f [FRIENDS]] [-l] [-a [AVATAR]]
-                  [-s [SIMILAR]] [-v]
+                  [-s [SIMILAR]]
 
 options:
   -h, --help            show this help message and exit
-  -u [USERNAME], --username [USERNAME]
+  -u, --username [USERNAME]
                         searches all public information by username
-  -o [ORGANIZATION], --organization [ORGANIZATION]
+  -o, --organization [ORGANIZATION]
                         searches all public information by organization
-  -e [EMAIL], --email [EMAIL]
-                        search for an account by email
-  -f [FRIENDS], --friends [FRIENDS]
+  -e, --email [EMAIL]   search for an account by email
+  -f, --friends [FRIENDS]
                         search for potential friends by username
-  -l, --light           light mode with option '-e'
-  -a [AVATAR], --avatar [AVATAR]
+  -l, --light           light mode with option '-e' (search account by email with API)
+  -a, --avatar [AVATAR]
                         download profile picture (avatar) by username
-  -s [SIMILAR], --similar [SIMILAR]
-                        search for similar names by usernamee
-  -v, --version         check your version & update(s)
+  -s, --similar [SIMILAR]
+                        search for similar names by username
 ```
-[Light mode] run light mode with this usage: `$ python ./gitsint.py -l -e <email address>`
+
+### 🐧 Some examples of usage
+- `$ python3 gitsint.py -u username`
+- `$ python3 gitsint.py -o orga`
+- `$ python3 gitsint.py -e email@email.com`🦾 Recommended for a **100%** accurate result.
+- `$ python3 gitsint.py -l -e email@email.com` ✨ The 'light' mode is far less efficient than the 'email' module; it works using the GitHub API.
 
 ## 🌞 More
 
