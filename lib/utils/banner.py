@@ -8,8 +8,8 @@ WHITE = Text_Manager.WHITE
 with open('config.json') as file:
     version = json.load(file)['version']
 
-banner = f"""{RED}
-    |\__/,|   (`\\
+banner = rf"""{RED}
+    |\__/,|   (`\
   _.|o o  |_   ) )
 -(((---(((----------------------  
  / _] |_   _/' _/| |  \| |_   _| 
