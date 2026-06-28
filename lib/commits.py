@@ -1,5 +1,5 @@
 import asyncio
-from lib.utils.utils import GitEngine
+from lib.utils.utils import GitEngine, delete_tmp_dir
 from lib.Requests import *
 
 MAX_CONCURRENT_REPOS = 5
@@ -60,8 +60,11 @@ async def collect_history(user):
                         emails[email]["count"] += 1
 
     await asyncio.gather(*(process_repo(repo) for repo in repos))
-    return emails, usernames
+    
+    await asyncio.sleep(0.2)
+    delete_tmp_dir()
 
+    return emails, usernames
 
 class Email:
     async def search(user):
