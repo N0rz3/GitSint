@@ -23,4 +23,4 @@ class Version:
             print(f"🐱 You are advised to reinstall the tool ({TM.CYAN}{TM('https://github.com/N0rz3/GitSint').italic()}{TM.WHITE})\n")
 
         else:
-            print(f"🔥 Your are up to date !\n")
+            print(f"🔥 You are up to date !\n")
