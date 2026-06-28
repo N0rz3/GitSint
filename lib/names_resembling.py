@@ -1,8 +1,6 @@
 from .Requests import Requests
 from bs4 import BeautifulSoup
-
-# patch note n°2
-# fix {AttributeError: 'NoneType' object has no attribute 'text'}
+from .utils.utils import name_find
 
 async def search(user):
     api = "https://api.github.com/search/users?q={}".format(user)
@@ -24,20 +22,10 @@ async def search(user):
                         if _login != user:
                             count += 1     
 
-                            url = f"https://github.com/{_login}"
+                            name = await name_find(_login)
+                            if name:
+                                print(f"[+] 🙉 {_login} ({name})")
 
-                            _r = await Requests(url).get()
-
-                            soup = BeautifulSoup(_r.text, 'html.parser')
-                            name = soup.find("span", {"class": "p-name vcard-fullname d-block overflow-hidden"})
-                            if name != None:
-                                _name = name.text.strip()
-
-                                if _name != '':
-                                    print(f"[+] 🙉 {_login} ({_name})")
-
-                                else:
-                                    print(f"[+] 🙉 {_login}")
                             else:
                                 print(f"[+] 🙉 {_login}")
 
