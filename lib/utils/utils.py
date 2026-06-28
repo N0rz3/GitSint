@@ -1,4 +1,8 @@
 import time
+import shutil
+import subprocess
+import tempfile
+from bs4 import BeautifulSoup
 from lib.Requests import *
 
 class Text_Manager:
@@ -12,6 +16,7 @@ class Text_Manager:
     GREEN = "\033[38;2;0;201;87m"
     PURPLE = "\033[38;2;171;130;255m"
     BLACK = "\033[38;2;89;89;89m"
+    CYAN = "\033[36m"
 
     def italic(self):
         ITALIC = "\033[3m" + self.text + "\033[0m"
@@ -29,7 +34,6 @@ class Text_Manager:
 class Keys:
     def __init__(self, target: str) -> None:
         self.targ = target
-        # self.keys_lister: list[str]
 
     async def key_recoverer(self):
         r = await Requests(url=f"https://github.com/{self.targ}.keys").get()
@@ -98,3 +102,83 @@ class Credentials:
 
         else:
             exit("[-] 🎯 The scopes (repo, delete_repo, user:email) are not present in the token.")
+
+class GitEngine:
+    async def get_all_repositories(user):
+        repos = []
+        page = 1
+
+        while True:
+            r = await Requests(f"https://api.github.com/users/{user}/repos?per_page=100&page={page}").get()
+            data = r.json()
+
+            if not isinstance(data, list) or not data:
+                break
+
+            repos.extend(data)
+
+            if len(data) < 100:
+                break
+
+            page += 1
+        return repos
+
+    def clone_repository(url):
+        temp_dir = tempfile.mkdtemp(prefix="trackx_")
+
+        try:
+            cmd = ["git", "clone", "--quiet"]
+            cmd += ["--depth", "1"]
+            cmd += [url, temp_dir]
+
+            subprocess.run(
+                cmd,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+                check=True
+            )
+
+            return temp_dir
+
+        except Exception:
+            shutil.rmtree(temp_dir, ignore_errors=True)
+            return None
+
+    def extract_history(repo_path):
+        try:
+            result = subprocess.check_output(
+                [
+                    "git",
+                    "-C",
+                    repo_path,
+                    "log",
+                    "--all",
+                    "--format=%an|%ae"
+                ],
+                text=True,
+                stderr=subprocess.DEVNULL
+            )
+            return result.splitlines()
+
+        except Exception:
+            return []
+
+        finally:
+            shutil.rmtree(repo_path, ignore_errors=True)
+
+async def name_find(username: str):
+    url = f"https://github.com/{username}"
+
+    req = await Requests(url).get()
+
+    soup = BeautifulSoup(req.text, 'html.parser')
+    name = soup.find("span", {"class": "p-name vcard-fullname d-block overflow-hidden"})
+
+    if name != None:
+        _name = name.text.strip()
+        if _name != '':
+            return _name
+        else:
+            return None
+    else:
+        return None
