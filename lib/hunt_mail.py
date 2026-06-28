@@ -1,6 +1,8 @@
 from .Requests import Requests
 from .utils.utils import Text_Manager as TM
 from .utils.utils import Credentials
+from .utils.utils import name_find
+from .user import trackx
 import uuid
 import os
 
@@ -12,7 +14,7 @@ class Hunt_lightmod:
         api = "https://api.github.com/search/users?q={}".format(email)
 
         r = await Requests(api).get()
-        TM("[~] 🔎 GitHub account tracking...").Tprint()
+        TM("[~] 🎭 GitHub account tracking...").Tprint()
 
         if r.status_code == 200:
             try:
@@ -20,32 +22,40 @@ class Hunt_lightmod:
                 if not items:
                     exit(f"[-] 😔 {email} has not GitHub account.")
 
-                name = items[0]['login']
+                username = items[0]['login']
+                name = await name_find(username)
 
-                print(f"[+] 🤙 Username => {name}")
-                exit()
+                if name:
+                    print(f"[+] 🤙 Username => {username} ({name})")
+                
+                else:
+                    print(f"[+] 🤙 Username => {username}")
+
+                print()
+                await trackx(username)
 
             except (KeyError, ValueError):
-                print("[-] JSON parsing error.")
-                exit()
+                exit("[-] JSON parsing error.")
 
 class Hunt:
     def __init__(self, target: str) -> None:
         self.token = None
         self.user = None
-        self.name = None  
+        self.name = None
+        self.succes = bool
+        self.username = None
+        self.repo = str(uuid.uuid1())
         self.email = target
 
     async def create_repo(self):
-        repo = str(uuid.uuid1())
-        success = False
+        self.success = False
 
         headers = {
             'authorization': f'token {self.token}'
         }
 
         data = {
-            'name': repo,
+            'name': self.repo,
             'private': True
         }
 
@@ -53,14 +63,12 @@ class Hunt:
 
         if r.status_code == 201:
             TM("[+] 🎭 Creation of repo...").Tprint()  # creation private repo
-            success = True
-
-        return success, repo
+            self.success = True
 
     async def commit(self):
-        success, repo = await self.create_repo()
+        await self.create_repo()
 
-        if success:
+        if self.success:
             headers = {
                 "authorization": f'token {self.token}'
             }
@@ -75,53 +83,63 @@ class Hunt:
             }
 
             TM("[+] 🎭 Spoofing...").Tprint()  # spoofing commit with the email provided in the data
-            response = await Requests(f"https://api.github.com/repos/{self.user}/{repo}/contents/gitsint.txt", headers=headers, json=data).put()
+            response = await Requests(f"https://api.github.com/repos/{self.user}/{self.repo}/contents/gitsint.txt", headers=headers, json=data).put()
             if response.status_code == 201:
-                success = True
-
-            return success, repo
+                self.success = True
 
         else:
             exit()
 
     async def push(self):
-        success, repo = await self.commit()
+        await self.commit()
 
-        if success:
+        if self.success:
             headers = {
                 'authorization': f'token {self.token}'
             }
 
             TM("[+] 🎭 Pushing...").Tprint()  # data push (email) of the falsified commit
-            r = await Requests(f"https://api.github.com/repos/{self.user}/{repo}/commits", headers=headers).get()
+            r = await Requests(f"https://api.github.com/repos/{self.user}/{self.repo}/commits", headers=headers).get()
 
-            name = r.json()[0]['author']
-            if not name:
+            self.username = r.json()[0]['author']
+
+            if not self.username:
                 print(f"\n[-] 😔 {self.email} has not GitHub account.")
-            else:
-                print(f"\n[+] 🤙 Username => {name['login']}")
 
-            return repo
+            else:
+                name = await name_find(self.username['login'])
+
+                if name:
+                    print(f"\n[+] 🤙 Username => {self.username['login']} ({name})")
+
+                else:
+                    print(f"\n[+] 🤙 Username => {self.username['login']}")
 
         else:
-            exit("\n[!] Commit error.")
+            print("\n[!] Commit error.")
 
     async def delete(self):
-        repo = await self.push()
+        await self.push()
 
         headers = {
             'authorization': f'token {self.token}'
         }
 
-        r = await Requests(f"https://api.github.com/repos/{self.user}/{repo}", headers=headers).delete()
+        r = await Requests(f"https://api.github.com/repos/{self.user}/{self.repo}", headers=headers).delete()
 
         if r.status_code == 204:
             print(TM(f"[+] Repo deleted.").italic())  # delete private repo
         else:
             print("[-] Error while deleting the repo.")
-            
+
+        if self.username:
+            print()
+            await trackx(self.username['login'])
+        else:
+            pass
+
 #######################################################################################
-    
+
     async def login(self):
         self.name = None
         self.token = None
