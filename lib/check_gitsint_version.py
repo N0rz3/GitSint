@@ -19,7 +19,7 @@ class Version:
         v_ = file['version']
 
         if v != v_:
-            print(f"🙀 Your are not up to date, the {TM.PURPLE}{v_}{TM.WHITE} version is available !")
+            print(f"🙀 You are not up to date, the {TM.PURPLE}{v_}{TM.WHITE} version is available !")
             print(f"🐱 You are advised to reinstall the tool ({TM.CYAN}{TM('https://github.com/N0rz3/GitSint').italic()}{TM.WHITE})\n")
 
         else:
