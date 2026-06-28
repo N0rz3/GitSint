@@ -1,4 +1,4 @@
-from .utils.utils import Text_Manager
+from .utils.utils import Text_Manager as TM
 from .Requests import Requests
 import json
 
@@ -8,9 +8,6 @@ class Version:
             j = json.load(json_file)
 
             v = j['version']
-
-            print(f"[+] Your version is: " + v)
-
             return v
 
     async def check_update():
@@ -22,8 +19,8 @@ class Version:
         v_ = file['version']
 
         if v != v_:
-            print(f"\n[-] Your version isn't up to date")
-            print(f"[~] You are advised to reinstall the tool\n=> https://github.com/N0rz3/GitSint")
+            print(f"🙀 Your are not up to date, the {TM.PURPLE}{v_}{TM.WHITE} version is available !")
+            print(f"🐱 You are advised to reinstall the tool ({TM.CYAN}{TM('https://github.com/N0rz3/GitSint').italic()}{TM.WHITE})\n")
 
         else:
-            print(f"\n[+] Your version is up to date")
+            print(f"🔥 Your are up to date !\n")
