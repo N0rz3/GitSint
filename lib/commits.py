@@ -1,109 +1,113 @@
-from .Requests import Requests       
+import asyncio
+from lib.utils.utils import GitEngine
+from lib.Requests import *
+
+MAX_CONCURRENT_REPOS = 5
+_HISTORY_CACHE = {}
+
+async def get_history(user):
+    if user in _HISTORY_CACHE:
+        return _HISTORY_CACHE[user]
+
+    data = await collect_history(user)
+
+    _HISTORY_CACHE[user] = data
+
+    return data
+
+async def collect_history(user):
+    repos = await GitEngine.get_all_repositories(user)
+
+    emails = {}
+    usernames = {}
+
+    semaphore = asyncio.Semaphore(MAX_CONCURRENT_REPOS)
+
+    async def process_repo(repo):
+        async with semaphore:
+            url = repo.get("clone_url")
+
+            if not url:
+                return
+
+            repo_path = await asyncio.to_thread(GitEngine.clone_repository, url)
+
+            if not repo_path:
+                return
+
+            history = await asyncio.to_thread(GitEngine.extract_history, repo_path)
+
+            for line in history:
+                if "|" not in line:
+                    continue
+
+                name, email = line.split("|", 1)
+
+                name = name.strip()
+                email = email.strip()
+
+                if name:
+                    usernames[name] = usernames.get(name, 0) + 1
+
+                if email and "@users.noreply.github.com" not in email:
+
+                    if email not in emails:
+                        emails[email] = {
+                            "name": name,
+                            "count": 1
+                        }
+                    else:
+                        emails[email]["count"] += 1
+
+    await asyncio.gather(*(process_repo(repo) for repo in repos))
+    return emails, usernames
+
 
 class Email:
     async def search(user):
 
-        r = await Requests(f"https://api.github.com/users/{user}/events").get()
-        events = r.json()
-
-        emails = []
-
-        for event in events:
-            if event["type"] == "PushEvent":
-                commits = event["payload"]["commits"]
-                for commit in commits:
-                    author = commit["author"]
-                    email = author.get("email")
-                    username = author.get("name")
-                    if email and "@users.noreply.github.com" not in email:
-                        if (email, username) not in emails:
-                            emails.append((email, username))
+        emails, _ = await get_history(user)
 
         result = {
-            'count': len(emails),  
-            'emails': []           
+            "count": len(emails),
+            "emails": []
         }
 
-        for email, username in emails:
-            result['emails'].append({
-                'name': username,
-                'email': email
+        for email, data in sorted(
+            emails.items(),
+            key=lambda x: x[1]["count"],
+            reverse=True
+        ):
+
+            result["emails"].append({
+                "name": data["name"],
+                "email": email,
+                "count": data["count"]
             })
 
-        if result['count'] > 0:
-            return result
-        else:
-            return {
-                'message': 'Email(s) not found in commits for the given user'
-            }
-
-    async def resolv_email(user):
-        count = 0
-        email = None  
-
-        r = await Requests(f"https://api.github.com/users/{user}/events").get()
-        events = r.json()
-
-        for event in events:
-            if event["type"] == "PushEvent":
-                commits = event["payload"]["commits"]
-                for commit in commits:
-                    author = commit["author"]
-                    current_email = author.get("email")
-                    username = author.get("name")
-                    if current_email and "@users.noreply.github.com" not in current_email and username == user:
-                        count += 1
-                        email = current_email 
-
-        result = {
-            'count': count,  
-            'email': email          
+        return result if result["count"] > 0 else {
+            "message": "Email(s) not found."
         }
-
-        if result['count'] > 0:
-            return result
-        elif result['count'] == 0:
-            return {
-                'email': 'None@nop'
-            }
 
 class Name:
     async def history(user):
-        response = await Requests("https://api.github.com/users/{}/events".format(user)).get()
 
-        pseudos = {}
+        _, usernames = await get_history(user)
 
-        data = response.json()
-
-        for commit in data:
-            if commit["type"] == "PushEvent":
-                commits = commit["payload"]["commits"]
-                for c in commits:
-                    pseudo = c["author"]["name"]
-                    if pseudo in pseudos:
-                        pseudos[pseudo] += 1
-                    else:
-                        pseudos[pseudo] = 1
-
-        if len(pseudos) > 0:
-            gateau = {
-                'message': 'History of usernames found in commits'
-            }
-            listt = []
-            for pseudo, count in pseudos.items():
-                d = {
-                    'name': pseudo,
-                    'count': count
-                }
-                listt.append(d)
-            gateau['names'] = listt
-            return gateau
-
-        else:
+        if not usernames:
             return {
-                'message': f'No names found in commits.',
-                'names':{
-                    'name': None,
-                    'count': 0
-                }
+                "message": "No names found in commits.",
+                "names": [{"name": None, "count": 0}]
             }
+
+        return {
+            "message": "History of usernames found in commits",
+            "names": [
+                {"name": n, "count": c}
+                for n, c in sorted(
+                    usernames.items(),
+                    key=lambda x: x[1],
+                    reverse=True
+                )
+            ]
+        }
