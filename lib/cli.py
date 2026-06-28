@@ -41,7 +41,7 @@ async def parser():
     parser.add_argument(
         '-l', '--light',
         action='store_true',
-        help="light mode with option '-e'"
+        help="light mode with option '-e' (search account by email with API)"
     )
     parser.add_argument(
         '-a', '--avatar',
@@ -55,15 +55,12 @@ async def parser():
         nargs='?',
         type=str,
         default=None,
-        help='search for similar names by usernamee'
-    )
-    parser.add_argument(
-        '-v', '--version',
-        action='store_true',
-        help="check your version & update(s)"
+        help='search for similar names by username'
     )
 
     args = parser.parse_args()
+
+    await Version.check_update()
 
     if args.username:
         user = args.username
@@ -101,9 +98,6 @@ async def parser():
         username = args.similar
         await search(user=username)
         exit()
-
-    elif args.version:
-        await Version.check_update()
 
     else:
         exit(1)
