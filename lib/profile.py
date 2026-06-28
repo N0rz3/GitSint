@@ -105,16 +105,3 @@ class user_infos:
                 'message': 'Has no related organizations'
             }
             return data
-        
-    async def contributions(user):
-        url = "https://github.com/{}".format(user)
-
-        r = await Requests(url).get()
-
-        soup = BeautifulSoup(r.text, "html.parser")
-
-        contribut = soup.find('h2', {'class': 'f4 text-normal mb-2'})
-        contribut = contribut.text.strip()
-
-        numbers = Text_Manager(text=contribut).no_letters()
-        return numbers
