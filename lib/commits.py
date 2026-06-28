@@ -25,6 +25,9 @@ async def collect_history(user):
 
     async def process_repo(repo):
         async with semaphore:
+            if repo.get("fork"):
+                return
+
             url = repo.get("clone_url")
 
             if not url:
