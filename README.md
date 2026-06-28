@@ -39,7 +39,7 @@
 - email to account
 
 👀 **The information found by GitSint is presented in the form of a tree structure for better navigation.**
-![](assets/gitsint.png)
+![](assets/gitsintt.png)
 
 ## **🎉What's new ?**
 
