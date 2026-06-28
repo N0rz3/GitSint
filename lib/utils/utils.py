@@ -2,6 +2,9 @@ import time
 import shutil
 import subprocess
 import tempfile
+from pathlib import Path
+import os
+import stat
 from bs4 import BeautifulSoup
 from lib.Requests import *
 
@@ -124,7 +127,10 @@ class GitEngine:
         return repos
 
     def clone_repository(url):
-        temp_dir = tempfile.mkdtemp(prefix="trackx_")
+        temp_dir = tempfile.mkdtemp(
+            prefix="repo_",
+            dir=TMP_DIR
+        )
 
         try:
             cmd = ["git", "clone", "--quiet"]
@@ -182,3 +188,30 @@ async def name_find(username: str):
             return None
     else:
         return None
+
+TMP_DIR = Path(tempfile.gettempdir()) / "trackx"
+TMP_DIR.mkdir(parents=True, exist_ok=True)
+
+def change_permissions(path):
+    if not path.exists():
+        return
+
+    for root, dirs, files in os.walk(path):
+        for d in dirs:
+            try:
+                os.chmod(os.path.join(root, d), stat.S_IWRITE)
+            except Exception:
+                pass
+
+        for f in files:
+            try:
+                os.chmod(os.path.join(root, f), stat.S_IWRITE)
+            except Exception:
+                pass
+
+def delete_tmp_dir():
+    if not TMP_DIR.exists():
+        return
+
+    change_permissions(TMP_DIR)
+    shutil.rmtree(TMP_DIR, ignore_errors=True)
